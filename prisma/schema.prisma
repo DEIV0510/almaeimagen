@@ -1,0 +1,56 @@
+// Alma e Imagen · The Academy — esquema de base de datos
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int              @id @default(autoincrement())
+  name      String
+  email     String           @unique
+  password  String
+  createdAt DateTime         @default(now())
+  progress  LessonProgress[]
+}
+
+model Module {
+  id          Int      @id @default(autoincrement())
+  order       Int      @unique
+  slug        String   @unique
+  title       String
+  tagline     String
+  description String
+  goal        String
+  accent      String   @default("#ED2A8C")
+  lessons     Lesson[]
+}
+
+model Lesson {
+  id        Int              @id @default(autoincrement())
+  moduleId  Int
+  module    Module           @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  order     Int
+  title     String
+  duration  String           @default("8 min")
+  videoUrl  String?
+  content   String
+  progress  LessonProgress[]
+
+  @@unique([moduleId, order])
+}
+
+model LessonProgress {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  lessonId    Int
+  completed   Boolean  @default(true)
+  completedAt DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson      Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+}
