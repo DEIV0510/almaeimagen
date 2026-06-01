@@ -69,6 +69,8 @@
   .reveal.is-in { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} }
   svg { display:inline-block; vertical-align:middle; }
+  .aei-carousel{ -ms-overflow-style:none; scrollbar-width:none; scroll-padding-left:1.25rem; }
+  .aei-carousel::-webkit-scrollbar{ height:0; }
 
   /* ===== SOLO CELULAR: listas como carrusel horizontal (deslizar) ===== */
   @media (max-width: 639px) {
@@ -230,7 +232,8 @@
       <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Siete etapas para volver a ti</h2>
       <p class="mt-4 text-ink-soft">Un camino guiado, módulo a módulo, desde la preparación interior hasta tu nuevo estilo.</p>
     </div>
-    <div class="mx-auto mt-14 max-w-4xl space-y-4" id="modulos-list"></div>
+    <p class="reveal mt-4 text-center font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-700">7 rutas · desliza para descubrirlas →</p>
+    <div class="aei-carousel mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pb-4" id="modulos-list"></div>
     <div class="reveal mt-10 text-center">
       <a href="#inscripcion" class="btn-primary !px-8 !py-4 text-base">Quiero entrar a la academia</a>
     </div>
@@ -351,23 +354,28 @@
   var chevron = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-2xl text-brand-500 transition-transform group-open:rotate-180"><path d="M6 9.5l6 6 6-6"/></svg>';
   var star = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-base"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>';
 
-  // Módulos (accordion)
+  // Módulos = tarjetas tipo "ruta" (portada editorial con foto)
+  var IMGS = [
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png",
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy1.png",
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy2.png",
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy8.png",
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy5.png",
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy6.png",
+    "https://almaeimagen.com/wp-content/uploads/2026/06/leidy7.png"
+  ];
+  var arrow = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-sm"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
   document.getElementById("modulos-list").innerHTML = MODULOS.map(function(m,i){
-    var lessons = m.c.map(function(l){ return '<div class="flex items-start gap-2.5 text-sm text-ink-soft"><span class="mt-1 shrink-0 text-base text-brand-600">'+check+'</span>'+l+'</div>'; }).join("");
-    return '<details class="reveal group overflow-hidden rounded-[1.5rem] border border-sand-200 bg-white shadow-soft">'+
-      '<summary class="flex cursor-pointer list-none items-center gap-5 p-6">'+
-        '<span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-xl text-cream-50" style="background:'+ACCENTS[i]+'">'+(i+1)+'</span>'+
-        '<span class="min-w-0 flex-1">'+
-          '<span class="font-sans text-[10px] font-bold uppercase tracking-[0.24em] text-brand-700">'+m.t+'</span>'+
-          '<span class="mt-0.5 block font-serif text-2xl font-semibold text-ink">'+m.n+'</span>'+
-          '<span class="mt-1 hidden font-serif text-base italic text-ink-muted sm:block">'+m.a+'</span>'+
-        '</span>'+chevron+
-      '</summary>'+
-      '<div class="border-t border-sand-200 px-6 py-6 sm:pl-[5.75rem]">'+
-        '<p class="text-sm leading-relaxed text-ink-soft"><span class="font-semibold text-ink">Objetivo:</span> '+m.g+'</p>'+
-        '<div class="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">'+lessons+'</div>'+
+    return '<a href="#inscripcion" class="group relative block aspect-[3/4] w-[78%] shrink-0 snap-center overflow-hidden rounded-[1.6rem] shadow-card sm:w-[300px]">'+
+      '<img src="'+IMGS[i]+'" alt="'+m.n+'" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110" />'+
+      '<div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(42,22,34,.45) 0%, rgba(42,22,34,.05) 40%, rgba(42,22,34,.9) 100%)"></div>'+
+      '<span class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/95 text-brand-700 shadow-soft transition-transform group-hover:translate-x-0.5">'+arrow+'</span>'+
+      '<div class="absolute inset-0 flex flex-col p-6 text-cream-50">'+
+        '<span class="font-sans text-[10px] font-bold uppercase tracking-[0.34em] text-cream-50/90" style="text-shadow:0 1px 8px rgba(0,0,0,.3)">Ruta · '+m.t.split(" · ")[0]+'</span>'+
+        '<span class="mt-auto font-serif text-[2.5rem] font-bold uppercase leading-[0.9] tracking-tight" style="text-shadow:0 2px 14px rgba(0,0,0,.35)">'+m.n+'</span>'+
+        '<span class="mt-2.5 font-serif text-[0.95rem] italic leading-snug text-cream-50/90">'+m.a+'</span>'+
       '</div>'+
-    '</details>';
+    '</a>';
   }).join("");
 
   // Beneficios
