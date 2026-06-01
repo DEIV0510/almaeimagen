@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alma e Imagen · The Academy — by Leidy Sepúlveda</title>
+<meta name="description" content="Una experiencia de formación emocional, espiritual y de imagen personal para mujeres que desean sanar, reconciliarse con su historia y proyectar su mejor versión." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { DEFAULT: "#2A1622", soft: "#5C4150", muted: "#8A7280" },
+          blush: { 50: "#FFF6FA", 100: "#FFE9F3", 200: "#FDD7E9" },
+          cream: { 50: "#FFF6FA", 100: "#FFE9F3", 200: "#FDD7E9" },
+          sand: { 100: "#FBDDEA", 200: "#F7C2DA", 300: "#EFA6C8" },
+          brand: { 50:"#FFF1F8",100:"#FFE1F0",200:"#FEC6E1",300:"#FB9ACB",400:"#F663B0",500:"#ED2A8C",600:"#D6207E",700:"#AE1565",800:"#860F4D",900:"#5E0935" },
+          nude: { 300:"#FCDDEB",400:"#F8B9D5",500:"#EF8FBC",600:"#E573AA" },
+          mocha: { 500:"#8A6E5A",600:"#6F5847",700:"#544235" },
+          plum: "#B5179E",
+        },
+        fontFamily: {
+          sans: ['Montserrat','ui-sans-serif','system-ui','sans-serif'],
+          serif: ['"Cormorant Garamond"','Georgia','serif'],
+          script: ['Sacramento','cursive'],
+        },
+        backgroundImage: {
+          "brand-gradient": "linear-gradient(125deg, #D6207E 0%, #B5179E 55%, #7E125A 100%)",
+          "gold-gradient": "linear-gradient(90deg, #ED2A8C 0%, #D6207E 100%)",
+          "blush-radial": "radial-gradient(60% 60% at 50% 0%, #FFE1F0 0%, #FFF6FA 70%)",
+        },
+        boxShadow: {
+          soft: "0 10px 40px -14px rgba(190,30,110,0.18)",
+          glow: "0 20px 55px -20px rgba(237,42,140,0.40)",
+          card: "0 26px 60px -30px rgba(42,22,34,0.20)",
+        },
+        keyframes: {
+          "fade-up": { "0%": { opacity:"0", transform:"translateY(24px)" }, "100%": { opacity:"1", transform:"translateY(0)" } },
+          float: { "0%,100%": { transform:"translateY(0)" }, "50%": { transform:"translateY(-12px)" } },
+        },
+        animation: { "fade-up":"fade-up .8s cubic-bezier(.22,1,.36,1) both", float:"float 7s ease-in-out infinite" },
+      },
+    },
+  };
+</script>
+
+<style type="text/tailwindcss">
+  @layer components {
+    .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+    .label { @apply font-sans text-[11px] font-semibold uppercase tracking-[0.34em] text-brand-700; }
+    .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-sans text-sm font-medium tracking-wide transition-all duration-300; }
+    .btn-primary { @apply btn bg-brand-600 text-white shadow-glow hover:-translate-y-0.5 hover:bg-brand-700; }
+    .btn-ghost { @apply btn border border-sand-300 bg-white/60 text-ink hover:border-brand-500 hover:text-brand-700; }
+    .gradient-text { @apply bg-gold-gradient bg-clip-text text-transparent; }
+    .card { @apply rounded-[1.75rem] border border-cream-200 bg-white shadow-card; }
+  }
+</style>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#FFF6FA; color:#2A1622; -webkit-font-smoothing:antialiased; }
+  ::selection { background:#FEC6E1; color:#5E0935; }
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity .85s cubic-bezier(.22,1,.36,1), transform .85s cubic-bezier(.22,1,.36,1); }
+  .reveal.is-in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} }
+  svg { display:inline-block; vertical-align:middle; }
+</style>
+</head>
+<body class="font-sans">
+
+<!-- ===== NAV ===== -->
+<header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300 border-b border-transparent">
+  <nav class="container-x flex h-[68px] items-center justify-between">
+    <a href="#top" class="flex flex-col leading-none">
+      <span class="font-script text-[28px] text-brand-800">Alma e Imagen</span>
+      <span class="-mt-1 pl-1 font-sans text-[8.5px] font-semibold uppercase tracking-[0.42em] text-ink/70">The Academy</span>
+    </a>
+    <div class="hidden items-center gap-8 lg:flex">
+      <a href="#modulos" class="font-sans text-sm font-medium text-ink-soft hover:text-brand-600">El programa</a>
+      <a href="#leidy" class="font-sans text-sm font-medium text-ink-soft hover:text-brand-600">Leidy</a>
+      <a href="#testimonios" class="font-sans text-sm font-medium text-ink-soft hover:text-brand-600">Testimonios</a>
+    </div>
+    <a href="#inscripcion" class="btn-primary text-xs">Inscríbete
+      <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-base"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+    </a>
+  </nav>
+</header>
+
+<main id="top" class="overflow-x-hidden">
+
+  <!-- ===== HERO ===== -->
+  <section class="relative bg-blush-radial pt-[68px]">
+    <div class="pointer-events-none absolute -right-32 top-16 h-[26rem] w-[26rem] rounded-full bg-sand-200/50 blur-3xl"></div>
+    <div class="pointer-events-none absolute -left-40 top-56 h-[24rem] w-[24rem] rounded-full bg-nude-300/40 blur-3xl"></div>
+    <div class="container-x relative grid items-center gap-12 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:py-24">
+      <div class="animate-fade-up">
+        <span class="inline-flex items-center gap-2 rounded-full border border-sand-300 bg-cream-50/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-700">The Academy · by Leidy Sepúlveda</span>
+        <h1 class="mt-6 font-serif text-[2.6rem] font-semibold leading-[1.08] text-ink sm:text-[3.6rem]">Transforma tu historia, <span class="gradient-text italic">sana tu interior</span> y proyecta la mujer que estás destinada a ser</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft"><span class="font-medium text-ink">Alma e Imagen · The Academy</span> es una experiencia de formación emocional, espiritual y de imagen personal para mujeres que desean sanar, reconstruirse y proyectar su mejor versión.</p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href="#inscripcion" class="btn-primary !px-8 !py-4 text-base">Quiero entrar a la academia
+            <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-lg"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+          </a>
+          <a href="#modulos" class="btn-ghost !px-8 !py-4 text-base">Ver módulos del programa</a>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div class="flex items-center gap-3">
+            <div class="flex text-brand-500">
+              <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
+              <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
+              <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
+              <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
+              <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
+            </div>
+            <p class="text-sm font-medium text-ink-soft">+500 mujeres en transformación</p>
+          </div>
+          <span class="hidden h-5 w-px bg-sand-300 sm:block"></span>
+          <p class="text-sm font-medium text-ink-soft">7 módulos · 54 clases</p>
+        </div>
+      </div>
+      <!-- Cover -->
+      <div class="relative mx-auto w-full max-w-md animate-float">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-sand-200 bg-gradient-to-br from-cream-100 via-nude-300/50 to-sand-200 shadow-card">
+          <div class="absolute inset-0" style="background:radial-gradient(120% 90% at 100% 0%, rgba(255,255,255,.6), transparent 45%)"></div>
+          <span class="absolute right-5 top-8 select-none font-serif text-[7rem] font-semibold italic leading-none text-white/40">Alma</span>
+          <div class="absolute inset-x-0 bottom-0 p-8">
+            <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.4em] text-mocha-700">The Academy</span>
+            <p class="font-script text-[3.4rem] leading-none text-brand-800">Alma e Imagen</p>
+            <p class="mt-3 max-w-[18rem] text-sm text-ink-soft">Sanar por dentro para proyectarte por fuera.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Values strip -->
+    <div class="border-y border-sand-200 bg-cream-100/60">
+      <div class="container-x flex flex-wrap items-center justify-center gap-x-7 gap-y-3 py-5 text-center">
+        <span class="font-serif text-lg italic text-ink-soft">Sanación</span>
+        <span class="text-brand-400">◆</span>
+        <span class="font-serif text-lg italic text-ink-soft">Amor propio</span>
+        <span class="text-brand-400">◆</span>
+        <span class="font-serif text-lg italic text-ink-soft">Reconciliación</span>
+        <span class="text-brand-400">◆</span>
+        <span class="font-serif text-lg italic text-ink-soft">Imagen personal</span>
+        <span class="text-brand-400">◆</span>
+        <span class="font-serif text-lg italic text-ink-soft">Proyección</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMA ===== -->
+  <section class="container-x py-20 sm:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="label">¿Te identificas?</span>
+      <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Sé exactamente lo que estás sintiendo</h2>
+      <p class="mt-4 text-ink-soft">Tal vez has avanzado en muchas áreas de tu vida, pero por dentro algo sigue pidiendo ser atendido.</p>
+    </div>
+    <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div class="reveal card p-7">Cargas heridas del pasado que aún pesan en tu presente.</div>
+      <div class="reveal card p-7">No sabes cómo sanar tu historia familiar y emocional.</div>
+      <div class="reveal card p-7">Te cuesta amarte, reconocerte y hablarte con compasión.</div>
+      <div class="reveal card p-7">Quieres verte y sentirte mejor, pero no sabes por dónde empezar.</div>
+      <div class="reveal card p-7">Deseas proyectar seguridad, elegancia y propósito.</div>
+      <div class="reveal flex items-center rounded-[1.75rem] bg-brand-gradient p-7 text-cream-50"><p class="font-serif text-2xl italic leading-snug">Mereces sanar, reconciliarte y volver a ti.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUCIÓN ===== -->
+  <section class="bg-white py-20 sm:py-28">
+    <div class="container-x">
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <span class="label">La ruta de transformación</span>
+        <blockquote class="mt-6 font-serif text-3xl font-medium italic leading-snug text-ink sm:text-[2.6rem]">“No puedes transformar lo que no entiendes, ni sostener lo que no has preparado dentro de ti.”</blockquote>
+        <p class="mt-7 text-lg leading-relaxed text-ink-soft">Por eso esta academia es una ruta completa: primero sanamos y preparamos tu mundo interior, y luego construimos tu imagen y tu proyección exterior. Adentro y afuera, en el orden correcto.</p>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
+        <div class="reveal card p-7">
+          <h3 class="font-serif text-2xl font-semibold text-ink">Sanas por dentro</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">Regulación emocional, heridas de la infancia, perdón, gratitud y amor propio.</p>
+        </div>
+        <div class="reveal card p-7">
+          <h3 class="font-serif text-2xl font-semibold text-ink">Proyectas por fuera</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">Asesoría de imagen, colorimetría, estilo y una proyección que comunica quién eres.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MÓDULOS ===== -->
+  <section id="modulos" class="container-x py-20 sm:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="label">El programa</span>
+      <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Siete etapas para volver a ti</h2>
+      <p class="mt-4 text-ink-soft">Un camino guiado, módulo a módulo, desde la preparación interior hasta tu nuevo estilo.</p>
+    </div>
+    <div class="mx-auto mt-14 max-w-4xl space-y-4" id="modulos-list"></div>
+    <div class="reveal mt-10 text-center">
+      <a href="#inscripcion" class="btn-primary !px-8 !py-4 text-base">Quiero entrar a la academia</a>
+    </div>
+  </section>
+
+  <!-- ===== BENEFICIOS ===== -->
+  <section class="bg-white py-20 sm:py-28">
+    <div class="container-x">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span class="label">Lo que lograrás</span>
+        <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Tu transformación, paso a paso</h2>
+      </div>
+      <div class="mt-14 grid gap-4 sm:grid-cols-2" id="beneficios-list"></div>
+    </div>
+  </section>
+
+  <!-- ===== RECURSOS ===== -->
+  <section class="container-x py-20 sm:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="label">Todo incluido</span>
+      <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Recursos que te acompañan</h2>
+      <p class="mt-4 text-ink-soft">Cada módulo viene con material práctico para que tu proceso sea profundo y sostenible.</p>
+    </div>
+    <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" id="recursos-list"></div>
+  </section>
+
+  <!-- ===== LEIDY ===== -->
+  <section id="leidy" class="bg-white py-20 sm:py-28">
+    <div class="container-x grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+      <div class="reveal relative mx-auto w-full max-w-sm">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-sand-200 bg-gradient-to-br from-cream-100 to-nude-300/60 shadow-card">
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="flex h-28 w-28 items-center justify-center rounded-full bg-brand-gradient font-serif text-4xl font-semibold text-cream-50 shadow-glow">LS</span>
+            <p class="mt-5 font-script text-4xl text-brand-800">Leidy Sepúlveda</p>
+            <span class="mt-1 font-sans text-[10px] font-semibold uppercase tracking-[0.32em] text-ink-soft">Fundadora &amp; Mentora</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="label">Sobre tu mentora</span>
+        <h2 class="mt-3 font-serif text-4xl font-semibold leading-tight text-ink sm:text-5xl">Acompañamiento desde el alma</h2>
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">Leidy Sepúlveda acompaña a mujeres en procesos de transformación interior y exterior, integrando herramientas de sanación emocional, amor propio, asesoría de imagen y proyección personal.</p>
+        <p class="mt-6 font-script text-4xl text-brand-800">Leidy Sepúlveda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIOS ===== -->
+  <section id="testimonios" class="container-x py-20 sm:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="label">Testimonios</span>
+      <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Historias que renacen</h2>
+    </div>
+    <div class="mt-14 grid gap-6 md:grid-cols-3" id="testimonios-list"></div>
+  </section>
+
+  <!-- ===== CTA / INSCRIPCIÓN ===== -->
+  <section id="inscripcion" class="container-x pb-24">
+    <div class="reveal relative overflow-hidden rounded-[2.25rem] bg-brand-gradient px-8 py-16 text-center text-cream-50 sm:px-16 sm:py-20">
+      <div class="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-brand-500/30 blur-3xl"></div>
+      <div class="relative z-10">
+        <p class="font-script text-5xl text-brand-200">Es momento</p>
+        <h2 class="mt-1 font-serif text-4xl font-semibold sm:text-5xl">de volver a ti</h2>
+        <p class="mx-auto mt-5 max-w-xl text-cream-100/85">Esta academia no es solo un curso. Es una ruta para sanar, reconciliarte con tu historia y proyectar la mujer que realmente eres.</p>
+        <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy" class="mt-8 inline-flex items-center gap-2 rounded-full bg-cream-50 px-8 py-4 text-base font-semibold text-ink transition-transform hover:-translate-y-0.5">Quiero comenzar mi transformación
+          <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-lg"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="relative overflow-hidden bg-ink text-cream-50">
+    <div class="container-x relative z-10 py-14 text-center">
+      <p class="font-script text-4xl text-brand-300">Alma e Imagen</p>
+      <p class="mt-1 font-sans text-[10px] font-semibold uppercase tracking-[0.42em] text-cream-50/60">The Academy · by Leidy Sepúlveda</p>
+      <p class="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-cream-50/70">Una experiencia de formación emocional, espiritual y de imagen personal para mujeres que desean sanar, reconciliarse con su historia y proyectar su mejor versión.</p>
+      <p class="mt-8 text-xs text-cream-50/50">© <span id="year"></span> Alma e Imagen · The Academy — Hecho con propósito en Colombia.</p>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // ===== DATA =====
+  var MODULOS = [
+    { t:"Bienvenida · Empieza aquí", n:"Bienvenida", a:"Tu transformación comienza en el momento en que decides volver a ti.", g:"Darte la bienvenida, explicar el método y despertar el deseo de vivir todo el proceso.", c:["Bienvenida a la academia","Cómo está construido el método","Cómo aprovechar al máximo tu proceso"] },
+    { t:"Módulo 0 · Preparación", n:"Mapa de Ruta", a:"No puedes transformar lo que no entiendes, ni sostener lo que no has preparado dentro de ti.", g:"Preparar tu sistema nervioso y tu autoconocimiento antes de la sanación profunda.", c:["Regulación del sistema nervioso","Autoconocimiento","Audio de regulación del sistema nervioso","Taller de sistema nervioso","Taller de autoconocimiento con 50 preguntas"] },
+    { t:"Módulo 1 · Sanación del origen", n:"Raíces", a:"Sanar el origen no cambia tu historia, pero libera el diseño original de tu destino.", g:"Identificar con compasión las heridas primarias de la infancia y cómo moldearon tu personalidad.", c:["Heridas de la infancia","Herida materna","Herida paterna","Niña interior","Carta a mamá","Carta a papá","Árbol genealógico","Imagen útero","Talleres y audios de sanación"] },
+    { t:"Módulo 2 · Perdón y gratitud", n:"Reconciliación", a:"El perdón limpia el espejo y la gratitud ilumina el reflejo.", g:"Transformar el dolor en una plataforma de paz a través del perdón consciente y la gratitud.", c:["Ruta del perdón","Taller del perdón","Ejercicio de culpa","Audio para trabajar el perdón","Gratitud como ciencia","Taller de gratitud","Audio de gratitud","Reto de 21 días de gratitud"] },
+    { t:"Módulo 3 · Amor propio e inteligencia emocional", n:"Construcción del Ser", a:"El amor propio no es un destino, es la casa donde vuelves a habitarte.", g:"Fortalecer tu amor propio, regular tus emociones y reprogramar creencias limitantes.", c:["Amor propio","Taller de amor propio","Reto de amor propio de 60 días","Método 30 6/A","Inteligencia emocional","Taller de manejo de emociones","Arteterapia","Límites","Reprogramación de creencias"] },
+    { t:"Módulo 4 · Asesoría de imagen", n:"Mi Reflejo", a:"Cuando sanas por dentro, el espejo deja de mentirte.", g:"Reconocer tu imagen personal —rostro, cuerpo y colorimetría— con criterio profesional.", c:["Qué es una asesoría de imagen","Taller de asesoría de imagen","Visagismo","Instructivo tipo de rostro con fotos","Composición corporal","Instructivo tipo de cuerpo con fotos","Colorimetría","Rueda de color","Instructivo para usar la rueda de color"] },
+    { t:"Módulo 5 · Tu nuevo estilo", n:"Proyección", a:"Proyectas con naturalidad la mujer que por fin reconoces en ti.", g:"Proyectar seguridad, elegancia y autenticidad con un estilo que comunica quién eres.", c:["Estilos universales","Edición de armario","Ruta de compras","Imagen que comunica","Lenguaje corporal","Comportamiento","Etiqueta","Guía de salud y nutrición","Guía de automaquillaje","Tu nuevo estilo","Video de cierre, despedida y agradecimientos"] },
+  ];
+  var ACCENTS = ["#ED2A8C","#D6207E","#B5179E","#E2348F","#C71585","#DD2486","#AE1565"];
+  var BENEFICIOS = ["Comprender tu historia personal con claridad y compasión","Sanar heridas emocionales de raíz","Fortalecer tu amor propio","Regular tus emociones","Reconocer y potenciar tu imagen personal","Vestirte según tu cuerpo, rostro y colorimetría","Proyectar seguridad, elegancia y autenticidad","Construir una nueva versión de ti misma"];
+  var RECURSOS = ["Videos formativos","Talleres descargables","Audios terapéuticos","Retos prácticos","Guías de imagen personal","Instructivos visuales","Ejercicios de autoconocimiento","Acompañamiento por módulos"];
+  var TESTIMONIOS = [
+    { q:"Entré buscando cambiar mi imagen y terminé sanando heridas que cargué por años. Hoy me miro distinto.", n:"Valentina R.", r:"Alumna de la academia", i:"VR" },
+    { q:"El módulo de Raíces me removió por completo. Por primera vez entendí mi historia y pude soltarla con amor.", n:"Daniela M.", r:"Alumna de la academia", i:"DM" },
+    { q:"Leidy acompaña desde el alma. Aprendí a perdonar, a quererme y, además, a vestirme y proyectarme con seguridad.", n:"Carolina P.", r:"Alumna de la academia", i:"CP" },
+  ];
+
+  var check = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>';
+  var chevron = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-2xl text-brand-500 transition-transform group-open:rotate-180"><path d="M6 9.5l6 6 6-6"/></svg>';
+  var star = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-base"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>';
+
+  // Módulos (accordion)
+  document.getElementById("modulos-list").innerHTML = MODULOS.map(function(m,i){
+    var lessons = m.c.map(function(l){ return '<div class="flex items-start gap-2.5 text-sm text-ink-soft"><span class="mt-1 shrink-0 text-base text-brand-600">'+check+'</span>'+l+'</div>'; }).join("");
+    return '<details class="reveal group overflow-hidden rounded-[1.5rem] border border-sand-200 bg-white shadow-soft">'+
+      '<summary class="flex cursor-pointer list-none items-center gap-5 p-6">'+
+        '<span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-xl text-cream-50" style="background:'+ACCENTS[i]+'">'+(i+1)+'</span>'+
+        '<span class="min-w-0 flex-1">'+
+          '<span class="font-sans text-[10px] font-bold uppercase tracking-[0.24em] text-brand-700">'+m.t+'</span>'+
+          '<span class="mt-0.5 block font-serif text-2xl font-semibold text-ink">'+m.n+'</span>'+
+          '<span class="mt-1 hidden font-serif text-base italic text-ink-muted sm:block">'+m.a+'</span>'+
+        '</span>'+chevron+
+      '</summary>'+
+      '<div class="border-t border-sand-200 px-6 py-6 sm:pl-[5.75rem]">'+
+        '<p class="text-sm leading-relaxed text-ink-soft"><span class="font-semibold text-ink">Objetivo:</span> '+m.g+'</p>'+
+        '<div class="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">'+lessons+'</div>'+
+      '</div>'+
+    '</details>';
+  }).join("");
+
+  // Beneficios
+  document.getElementById("beneficios-list").innerHTML = BENEFICIOS.map(function(b){
+    return '<div class="reveal flex items-center gap-4 rounded-2xl border border-sand-200 bg-cream-50 p-5"><span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-gradient text-cream-50">'+check+'</span><p class="font-medium text-ink">'+b+'</p></div>';
+  }).join("");
+
+  // Recursos
+  document.getElementById("recursos-list").innerHTML = RECURSOS.map(function(r){
+    return '<div class="reveal card flex flex-col items-start p-6"><span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-nude-300/50 text-xl text-brand-700">✦</span><p class="mt-4 font-serif text-lg font-semibold text-ink">'+r+'</p></div>';
+  }).join("");
+
+  // Testimonios
+  document.getElementById("testimonios-list").innerHTML = TESTIMONIOS.map(function(t){
+    return '<div class="reveal card flex flex-col p-7"><div class="flex text-brand-500">'+star+star+star+star+star+'</div>'+
+      '<p class="mt-4 flex-1 font-serif text-lg italic leading-relaxed text-ink">“'+t.q+'”</p>'+
+      '<div class="mt-6 flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-gradient text-sm font-semibold text-cream-50">'+t.i+'</span>'+
+      '<div><p class="font-sans text-sm font-semibold text-ink">'+t.n+'</p><p class="text-xs text-ink-muted">'+t.r+'</p></div></div></div>';
+  }).join("");
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); } });
+  }, { threshold:0.12, rootMargin:"0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  // Navbar background on scroll
+  var nav = document.getElementById("nav");
+  function onScroll(){ if(window.scrollY>24){ nav.classList.add("bg-blush-50/85","backdrop-blur-md","border-brand-100"); } else { nav.classList.remove("bg-blush-50/85","backdrop-blur-md","border-brand-100"); } }
+  window.addEventListener("scroll", onScroll, { passive:true }); onScroll();
+</script>
+</body>
+</html>
