@@ -322,7 +322,7 @@
     var intro=$('aei-test-intro'), quiz=$('aei-test-quiz'), result=$('aei-test-result');
     function show(el){ [intro,quiz,result].forEach(function(e){e.classList.add('hidden');}); el.classList.remove('hidden'); }
     var CHK='<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>';
-    function render(){
+    function render(scroll){
       var start=cur*PER, end=Math.min(start+PER, ALL.length), done=roundDone(cur);
       $('aei-test-step-label').textContent='Parte '+(cur+1)+' de '+ROUNDS;
       $('aei-test-progress-num').textContent=countAnswered()+'/'+ALL.length+' respondidas';
@@ -358,7 +358,7 @@
       var hint=$('aei-test-section-intro');
       hint.textContent = done ? '✓ ¡Listo! Ya puedes continuar.' : 'Responde las '+(end-start)+' preguntas de esta parte para continuar.';
       hint.style.color = done ? '#16a34a' : '#8A7280';
-      try{ quiz.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
+      if(scroll){ try{ quiz.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){} }
     }
     function compute(){
       var sc={abandono:0,rechazo:0,traicion:0,humillacion:0,injusticia:0}, total=0;
@@ -380,9 +380,9 @@
       show(result);
       try{ $('test').scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
     }
-    $('aei-test-start').addEventListener('click',function(){ cur=0; show(quiz); render(); });
-    $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render();} });
-    $('aei-test-next').addEventListener('click',function(){ if(!roundDone(cur)) return; if(cur<ROUNDS-1){cur++;render();} else {compute();} });
+    $('aei-test-start').addEventListener('click',function(){ cur=0; show(quiz); render(true); });
+    $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render(true);} });
+    $('aei-test-next').addEventListener('click',function(){ if(!roundDone(cur)) return; if(cur<ROUNDS-1){cur++;render(true);} else {compute();} });
     $('aei-test-restart').addEventListener('click',function(){ ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
   })();
   </script>
