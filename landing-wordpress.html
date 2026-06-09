@@ -111,6 +111,7 @@
     </a>
     <div class="hidden items-center gap-8 lg:flex">
       <a href="#modulos" class="font-sans text-sm font-medium text-ink-soft hover:text-brand-600">El programa</a>
+      <a href="#test" class="font-sans text-sm font-semibold text-brand-600 hover:text-brand-700">Test gratis</a>
       <a href="#leidy" class="font-sans text-sm font-medium text-ink-soft hover:text-brand-600">Leidy</a>
       <a href="#testimonios" class="font-sans text-sm font-medium text-ink-soft hover:text-brand-600">Testimonios</a>
     </div>
@@ -200,6 +201,181 @@
       <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy" class="btn-primary !px-8 !py-4 text-base">Quiero entrar a la academia</a>
     </div>
   </section>
+
+  <!-- ===== TEST DE HERIDAS DE LA INFANCIA ===== -->
+  <section id="test" class="bg-white py-20 sm:py-28">
+    <div class="container-x">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span class="label">Test gratuito · Descúbrete</span>
+        <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Descubre tu <span class="gradient-text italic">herida de la infancia</span></h2>
+        <p class="mt-4 text-ink-soft">Responde con honestidad y, al terminar, sabrás cuál de las 5 heridas marca tu vida hoy — y por dónde empezar a sanarla.</p>
+      </div>
+
+      <div id="aei-test" class="reveal mx-auto mt-12 max-w-3xl">
+        <!-- INTRO -->
+        <div id="aei-test-intro" class="card p-8 text-center sm:p-12">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-gradient text-white shadow-glow">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.2-8.6C1.3 8.6 2.7 5.5 5.8 5.1 7.8 4.9 9.4 6 12 8.6c2.6-2.6 4.2-3.7 6.2-3.5 3.1.4 4.5 3.5 3 6.3C19 15.6 12 20 12 20z"/></svg>
+          </div>
+          <h3 class="mt-6 font-serif text-3xl font-semibold text-ink">Test de Heridas de la Infancia</h3>
+          <p class="mt-3 text-ink-soft">4 secciones · unos 4 minutos · 100% privado. Tus respuestas no se guardan en ningún lado.</p>
+          <div class="mt-6 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Abandono</span>
+            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Rechazo</span>
+            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Traición</span>
+            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Humillación</span>
+            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Injusticia</span>
+          </div>
+          <button id="aei-test-start" class="btn-primary mt-8 !px-8 !py-4 text-base">Empezar el test
+            <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-lg"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+          </button>
+        </div>
+
+        <!-- QUIZ -->
+        <div id="aei-test-quiz" class="card hidden p-6 sm:p-10">
+          <div class="flex items-center justify-between gap-4">
+            <span id="aei-test-step-label" class="label"></span>
+            <span id="aei-test-progress-num" class="font-sans text-sm font-semibold text-ink-soft"></span>
+          </div>
+          <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-cream-200"><div id="aei-test-progress-bar" class="h-full rounded-full bg-gold-gradient transition-all duration-500" style="width:0%"></div></div>
+          <h3 id="aei-test-section-title" class="mt-7 font-serif text-2xl font-semibold text-ink sm:text-3xl"></h3>
+          <p id="aei-test-section-intro" class="mt-2 text-sm text-ink-soft"></p>
+          <div id="aei-test-questions" class="mt-7 space-y-8"></div>
+          <div class="mt-9 flex items-center justify-between gap-3">
+            <button id="aei-test-back" class="btn-ghost text-sm">← Atrás</button>
+            <button id="aei-test-next" class="btn-primary text-sm">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- RESULTADO -->
+        <div id="aei-test-result" class="card hidden overflow-hidden">
+          <div class="bg-brand-gradient p-8 text-center text-white sm:p-12">
+            <span class="font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-white/80">Tu resultado</span>
+            <p class="mt-3 font-sans text-sm font-medium text-white/85">Tu herida principal es</p>
+            <p id="aei-res-wound" class="mt-1 font-serif text-4xl font-semibold sm:text-5xl"></p>
+            <div id="aei-res-bars" class="mx-auto mt-7 max-w-md space-y-2.5"></div>
+          </div>
+          <div class="p-8 sm:p-12">
+            <p id="aei-res-profile" class="text-lg leading-relaxed text-ink-soft"></p>
+            <p id="aei-res-imagen" class="mt-4 rounded-2xl bg-blush-50 p-4 text-sm leading-relaxed text-ink-soft"></p>
+            <div class="mt-7 rounded-[1.5rem] border border-brand-200 bg-brand-50 p-6 text-center sm:p-8">
+              <p class="font-serif text-2xl font-semibold text-ink sm:text-3xl">Esto se puede sanar.</p>
+              <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-soft">En <span class="font-semibold text-ink">Alma e Imagen · The Academy</span> trabajamos exactamente esta herida en las 7 rutas — para que sanes por dentro y proyectes tu mejor versión por fuera.</p>
+              <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy" class="btn-primary mt-6 !px-8 !py-4 text-base">Quiero sanar en la academia
+                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-lg"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+              </a>
+            </div>
+            <button id="aei-test-restart" class="mx-auto mt-6 block font-sans text-sm font-semibold text-brand-700 hover:underline">↺ Repetir el test</button>
+            <p class="mt-4 text-center text-xs text-ink-muted">Este test es una herramienta de autoconocimiento, no un diagnóstico clínico.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    var W={
+      abandono:{name:'Abandono', profile:'Miedo a la soledad y dependencia emocional: buscas constantemente compañía y aprobación, y te cuesta estar a solas contigo misma.', imagen:'En tu imagen: tu estilo cambia según la relación en la que estás y necesitas la aprobación externa para sentirte bien.'},
+      rechazo:{name:'Rechazo', profile:'Sientes que no eres suficiente y tiendes a huir de ti misma: miedo a ser vista, a ocupar tu lugar, a mostrarte tal como eres.', imagen:'En tu imagen: evitas los espejos, te ocultas o pasas desapercibida, y te cuesta aceptar un cumplido.'},
+      traicion:{name:'Traición', profile:'Te cuesta confiar y sueles necesitar el control: tienes altas expectativas de ti y de los demás, y te cuesta mostrarte vulnerable.', imagen:'En tu imagen: proyectas éxito y fortaleza hacia afuera, aunque por dentro te cueste soltar y mostrarte frágil.'},
+      humillacion:{name:'Humillación', profile:'Tiendes a avergonzarte de ti misma y a menospreciarte; a veces aceptas el maltrato o te exiges en exceso para "valer".', imagen:'En tu imagen: o descuidas tu apariencia, o te sobreexiges con ella, y vives un conflicto con tu cuerpo.'},
+      injusticia:{name:'Injusticia', profile:'Perfeccionismo y autoexigencia: te cuesta permitirte errores y sientes que nunca es suficiente, por más que logres.', imagen:'En tu imagen: cuidas muchísimo cómo te ves hacia afuera, pero internamente nada te parece bastante.'}
+    };
+    var S=[
+      { t:'Tu Historia', i:'El entorno emocional en el que creciste.', qs:[
+        {q:'Durante tu infancia, tus padres estaban...', m:false, o:[['Felizmente casados',[]],['Casados pero infelices',['traicion','abandono']],['Divorciados',['abandono']],['Solo tenía un padre / madre',['abandono']],['No tenía padres (tutor, institución…)',['abandono','rechazo']]]},
+        {q:'¿Cómo describirías el ambiente en el que creciste?', m:true, o:[['De crianza y apoyo',[]],['Caótico e impredecible',['traicion','abandono']],['Inestable e inseguro',['abandono']],['Desafiante y exigente',['injusticia']],['Con dificultades económicas y escasez',['humillacion']],['Negligente y solitario',['abandono','rechazo']]]},
+        {q:'¿Alguna vez has tenido miedo de ser juzgada o rechazada por los demás?', m:false, o:[['Sí',['rechazo','humillacion']],['No',[]],['No estoy segura',[]]]},
+        {q:'¿Sientes que la tristeza o el ánimo bajo es "normal" o parte de quién eres?', m:false, o:[['Sí',['humillacion','rechazo']],['No',[]],['No estoy segura',[]]]}
+      ]},
+      { t:'Tendencias de Comportamiento', i:'Tus patrones automáticos en relaciones y situaciones sociales.', qs:[
+        {q:'¿Qué sientes al estar en el centro de atención?', m:true, o:[['Satisfacción',[]],['Estrés',['humillacion','injusticia']],['Desconexión',['abandono','rechazo']],['Timidez / vergüenza',['humillacion']]]},
+        {q:'En mis relaciones con los demás, a menudo...', m:true, o:[['Mantengo la distancia',['abandono','rechazo']],['Me abro demasiado rápido',['abandono']],['Trato de no apegarme',['abandono','traicion']],['Me apego demasiado rápido',['abandono']],['Me cuesta expresar mis sentimientos',['humillacion','injusticia']],['Evito el conflicto a toda costa',['traicion','humillacion']],['Me cuesta confiar',['traicion']]]},
+        {q:'«Me siento atraída repetidamente por personas que me tratan mal.»', m:false, o:[['Me identifico completamente',['rechazo','humillacion']],['Me identifico un poco',['rechazo']],['Apenas me identifico',[]],['No me identifico',[]]]}
+      ]},
+      { t:'Indicadores de Dificultad', i:'Señales presentes hoy en tu vida.', qs:[
+        {q:'«Siento que hay un retraso entre lo que siento y mi capacidad para expresarlo.»', m:false, o:[['Me identifico completamente',['humillacion','injusticia']],['Me identifico un poco',['humillacion']],['Apenas me identifico',[]],['No me identifico',[]]]},
+        {q:'¿Tienes problemas con la baja autoestima o el bajo valor propio?', m:false, o:[['Sí',['humillacion','rechazo']],['No',[]],['No estoy segura',[]]]},
+        {q:'¿Has notado cambios fuertes en tu forma de comer como respuesta al estrés?', m:false, o:[['Sí',['humillacion']],['No',[]]]},
+        {q:'¿A menudo sientes que estás constantemente en alerta?', m:false, o:[['Sí',['traicion']],['No',[]]]}
+      ]},
+      { t:'Imagen Personal', i:'Cómo te percibes, te muestras y te relacionas con tu cuerpo.', qs:[
+        {q:'Cuando te miras al espejo, tu reacción más frecuente es...', m:false, o:[['Me agrado tal como soy',[]],['Busco rápidamente los defectos',['humillacion','injusticia']],['Evito mirarme mucho tiempo',['rechazo','humillacion']],['Siento que la imagen que veo no soy yo',['rechazo']],['Depende mucho de mi estado de ánimo',['abandono']]]},
+        {q:'Cuando alguien te hace un cumplido sobre tu apariencia o tus logros...', m:false, o:[['Lo recibo con gratitud y lo creo',[]],['Lo minimizo ("fue suerte", "no es para tanto")',['humillacion','injusticia']],['Desconfío de quien lo dice',['traicion']],['Me incomoda y cambio de tema',['rechazo','humillacion']],['Me gusta un momento, pero luego lo olvido',['abandono']]]},
+        {q:'¿Cómo describes la forma en que te vistes o te presentas?', m:true, o:[['Me visto para sentirme bien conmigo misma',[]],['Me visto pensando en lo que otros esperan de mí',['rechazo','humillacion']],['Tiendo a ocultarme o pasar desapercibida',['rechazo','humillacion']],['Busco destacar para ganar aprobación',['abandono','rechazo']],['Me da igual cómo me veo',['humillacion']],['Mi apariencia cambia mucho según con quién esté',['abandono','rechazo']]]},
+        {q:'¿Cómo te relacionas con tu cuerpo?', m:false, o:[['Lo cuido y lo siento como aliado',[]],['A menudo lo ignoro o me desconecto de él',['humillacion']],['Tengo una relación conflictiva con mi imagen corporal',['humillacion','rechazo']],['Lo castigo (ejercicio excesivo, restricción…)',['injusticia','humillacion']],['No suelo pensar en mi cuerpo',[]]]},
+        {q:'¿Tienes un estilo personal definido con el que te sientas auténtica?', m:false, o:[['Sí, me siento cómoda con quién soy',[]],['Estoy en proceso de descubrirlo',['rechazo']],['Me adapto a lo que se espera según el contexto',['traicion','abandono']],['No me lo había planteado',[]]]},
+        {q:'Cuando logras algo importante, ¿cómo reaccionas?', m:false, o:[['Lo celebro y me siento orgullosa',[]],['Siento que no fue suficiente y ya pienso en el siguiente reto',['injusticia']],['Temo que descubran que "no soy tan buena"',['humillacion','rechazo']],['Espero que otros lo noten y me reconozcan',['abandono']]]},
+        {q:'¿Qué tan importante es para ti la imagen que proyectas en redes o en público?', m:false, o:[['No me importa demasiado; muestro lo que soy',[]],['Cuido mucho lo que comparto para dar buena imagen',['rechazo','humillacion']],['Evito las redes o la visibilidad pública',['rechazo','humillacion']],['Me comparo constantemente con los demás',['injusticia','humillacion']],['Busco validación (likes, comentarios, reconocimiento)',['abandono']]]},
+        {q:'¿Sientes expectativas sobre cómo debes verte o comportarte que no puedes cuestionar?', m:false, o:[['Sí, de mi familia',['injusticia','humillacion']],['Sí, de mi entorno social o cultural',['rechazo']],['Sí, de mi pareja o personas cercanas',['traicion','abandono']],['No, me siento libre de ser como quiero',[]]]},
+        {q:'Cuando cometes un error, ¿cómo te tratas a ti misma?', m:false, o:[['Con comprensión y autocompasión',[]],['Con crítica severa y exigencia',['injusticia','humillacion']],['Me abandono o me rindo fácilmente',['abandono']],['Culpo a otros o a las circunstancias',['traicion']],['No me permito equivocarme nunca',['injusticia']]]}
+      ]}
+    ];
+    var cur=0, ans={};
+    function $(id){return document.getElementById(id);}
+    var intro=$('aei-test-intro'), quiz=$('aei-test-quiz'), result=$('aei-test-result');
+    function show(el){ [intro,quiz,result].forEach(function(e){e.classList.add('hidden');}); el.classList.remove('hidden'); }
+    var CHK='<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>';
+    function render(){
+      var sec=S[cur], pct=Math.round(cur/S.length*100);
+      $('aei-test-step-label').textContent='Sección '+(cur+1)+' de '+S.length;
+      $('aei-test-progress-num').textContent=pct+'%';
+      $('aei-test-progress-bar').style.width=pct+'%';
+      $('aei-test-section-title').textContent=sec.t;
+      $('aei-test-section-intro').textContent=sec.i;
+      var wrap=$('aei-test-questions'); wrap.innerHTML='';
+      sec.qs.forEach(function(qq,qi){
+        var k=cur+'_'+qi, sel=ans[k]||[];
+        var block=document.createElement('div');
+        var head='<p class="font-sans text-base font-semibold text-ink">'+(qi+1)+'. '+qq.q+'</p>'+(qq.m?'<p class="mt-0.5 text-xs font-medium text-brand-600">Puedes elegir varias</p>':'');
+        block.innerHTML=head;
+        var ow=document.createElement('div'); ow.className='mt-3 grid gap-2';
+        qq.o.forEach(function(opt,oi){
+          var on=sel.indexOf(oi)>-1;
+          var b=document.createElement('button'); b.type='button';
+          b.className='flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left font-sans text-sm transition-all duration-200 '+(on?'border-brand-500 bg-brand-50 text-ink shadow-soft':'border-cream-200 bg-white text-ink-soft hover:border-sand-300 hover:bg-blush-50');
+          b.innerHTML='<span class="flex h-5 w-5 flex-none items-center justify-center border '+(qq.m?'rounded-md':'rounded-full')+' '+(on?'border-brand-500 bg-brand-500 text-white':'border-sand-300 bg-white')+'">'+(on?CHK:'')+'</span><span>'+opt[0]+'</span>';
+          b.addEventListener('click',function(){
+            var arr=ans[k]?ans[k].slice():[];
+            if(qq.m){ var p=arr.indexOf(oi); if(p>-1)arr.splice(p,1); else arr.push(oi); }
+            else { arr=[oi]; }
+            ans[k]=arr; render();
+          });
+          ow.appendChild(b);
+        });
+        block.appendChild(ow); wrap.appendChild(block);
+      });
+      $('aei-test-back').style.visibility = cur===0 ? 'hidden':'visible';
+      $('aei-test-next').textContent = (cur===S.length-1) ? 'Ver mi resultado ✦' : 'Siguiente →';
+      try{ quiz.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
+    }
+    function compute(){
+      var sc={abandono:0,rechazo:0,traicion:0,humillacion:0,injusticia:0}, total=0;
+      S.forEach(function(sec,si){ sec.qs.forEach(function(qq,qi){ (ans[si+'_'+qi]||[]).forEach(function(oi){ (qq.o[oi][1]||[]).forEach(function(w){ sc[w]++; total++; }); }); }); });
+      var order=['abandono','rechazo','traicion','humillacion','injusticia'];
+      order.sort(function(a,b){return sc[b]-sc[a];});
+      var top=order[0];
+      if(total===0){ top='rechazo'; }
+      var info=W[top];
+      $('aei-res-wound').textContent=info.name;
+      $('aei-res-profile').textContent=info.profile;
+      $('aei-res-imagen').textContent=info.imagen;
+      var bars=$('aei-res-bars'); bars.innerHTML='';
+      order.forEach(function(w){
+        var pct= total ? Math.round(sc[w]/total*100) : 0;
+        var row='<div class="flex items-center gap-2 text-xs"><span class="w-24 flex-none text-left text-white/90">'+W[w].name+'</span><span class="h-2 flex-1 overflow-hidden rounded-full bg-white/25"><span class="block h-full rounded-full bg-white transition-all duration-700" style="width:'+pct+'%"></span></span><span class="w-9 flex-none text-right text-white/80">'+pct+'%</span></div>';
+        bars.insertAdjacentHTML('beforeend', row);
+      });
+      show(result);
+      try{ $('test').scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
+    }
+    $('aei-test-start').addEventListener('click',function(){ cur=0; show(quiz); render(); });
+    $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render();} });
+    $('aei-test-next').addEventListener('click',function(){ if(cur<S.length-1){cur++;render();} else {compute();} });
+    $('aei-test-restart').addEventListener('click',function(){ ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
+  })();
+  </script>
 
   <!-- ===== PROBLEMA ===== -->
   <section class="container-x py-20 sm:py-28">
