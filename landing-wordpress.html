@@ -312,24 +312,27 @@
         {q:'Cuando cometes un error, ¿cómo te tratas a ti misma?', m:false, o:[['Con comprensión y autocompasión',[]],['Con crítica severa y exigencia',['injusticia','humillacion']],['Me abandono o me rindo fácilmente',['abandono']],['Culpo a otros o a las circunstancias',['traicion']],['No me permito equivocarme nunca',['injusticia']]]}
       ]}
     ];
+    var ALL=[]; S.forEach(function(sec){ sec.qs.forEach(function(qq){ ALL.push({sec:sec.t, q:qq.q, m:qq.m, o:qq.o}); }); });
+    var PER=5, ROUNDS=Math.ceil(ALL.length/PER);
     var cur=0, ans={};
+    function answered(gi){ return ans[gi] && ans[gi].length>0; }
+    function roundDone(r){ var s=r*PER, e=Math.min(s+PER, ALL.length); for(var i=s;i<e;i++){ if(!answered(i)) return false; } return true; }
+    function countAnswered(){ var n=0; for(var i=0;i<ALL.length;i++){ if(answered(i)) n++; } return n; }
     function $(id){return document.getElementById(id);}
     var intro=$('aei-test-intro'), quiz=$('aei-test-quiz'), result=$('aei-test-result');
     function show(el){ [intro,quiz,result].forEach(function(e){e.classList.add('hidden');}); el.classList.remove('hidden'); }
     var CHK='<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>';
     function render(){
-      var sec=S[cur], pct=Math.round(cur/S.length*100);
-      $('aei-test-step-label').textContent='Sección '+(cur+1)+' de '+S.length;
-      $('aei-test-progress-num').textContent=pct+'%';
-      $('aei-test-progress-bar').style.width=pct+'%';
-      $('aei-test-section-title').textContent=sec.t;
-      $('aei-test-section-intro').textContent=sec.i;
+      var start=cur*PER, end=Math.min(start+PER, ALL.length), done=roundDone(cur);
+      $('aei-test-step-label').textContent='Parte '+(cur+1)+' de '+ROUNDS;
+      $('aei-test-progress-num').textContent=countAnswered()+'/'+ALL.length+' respondidas';
+      $('aei-test-progress-bar').style.width=Math.round(countAnswered()/ALL.length*100)+'%';
+      $('aei-test-section-title').textContent='Preguntas '+(start+1)+' a '+end;
       var wrap=$('aei-test-questions'); wrap.innerHTML='';
-      sec.qs.forEach(function(qq,qi){
-        var k=cur+'_'+qi, sel=ans[k]||[];
+      for(var idx=start; idx<end; idx++){ (function(gi){
+        var qq=ALL[gi], sel=ans[gi]||[];
         var block=document.createElement('div');
-        var head='<p class="font-sans text-base font-semibold text-ink">'+(qi+1)+'. '+qq.q+'</p>'+(qq.m?'<p class="mt-0.5 text-xs font-medium text-brand-600">Puedes elegir varias</p>':'');
-        block.innerHTML=head;
+        block.innerHTML='<p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-600">'+qq.sec+'</p><p class="mt-1 font-sans text-base font-semibold text-ink">'+(gi+1)+'. '+qq.q+'</p>'+(qq.m?'<p class="mt-0.5 text-xs font-medium text-brand-600">Puedes elegir varias</p>':'');
         var ow=document.createElement('div'); ow.className='mt-3 grid gap-2';
         qq.o.forEach(function(opt,oi){
           var on=sel.indexOf(oi)>-1;
@@ -337,22 +340,29 @@
           b.className='flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left font-sans text-sm transition-all duration-200 '+(on?'border-brand-500 bg-brand-50 text-ink shadow-soft':'border-cream-200 bg-white text-ink-soft hover:border-sand-300 hover:bg-blush-50');
           b.innerHTML='<span class="flex h-5 w-5 flex-none items-center justify-center border '+(qq.m?'rounded-md':'rounded-full')+' '+(on?'border-brand-500 bg-brand-500 text-white':'border-sand-300 bg-white')+'">'+(on?CHK:'')+'</span><span>'+opt[0]+'</span>';
           b.addEventListener('click',function(){
-            var arr=ans[k]?ans[k].slice():[];
+            var arr=ans[gi]?ans[gi].slice():[];
             if(qq.m){ var p=arr.indexOf(oi); if(p>-1)arr.splice(p,1); else arr.push(oi); }
             else { arr=[oi]; }
-            ans[k]=arr; render();
+            ans[gi]=arr; render();
           });
           ow.appendChild(b);
         });
         block.appendChild(ow); wrap.appendChild(block);
-      });
+      })(idx); }
       $('aei-test-back').style.visibility = cur===0 ? 'hidden':'visible';
-      $('aei-test-next').textContent = (cur===S.length-1) ? 'Ver mi resultado ✦' : 'Siguiente →';
+      var nb=$('aei-test-next');
+      nb.textContent = (cur===ROUNDS-1) ? 'Ver mi resultado ✦' : 'Siguiente →';
+      nb.disabled = !done;
+      nb.style.opacity = done ? '1' : '0.4';
+      nb.style.cursor = done ? 'pointer' : 'not-allowed';
+      var hint=$('aei-test-section-intro');
+      hint.textContent = done ? '✓ ¡Listo! Ya puedes continuar.' : 'Responde las '+(end-start)+' preguntas de esta parte para continuar.';
+      hint.style.color = done ? '#16a34a' : '#8A7280';
       try{ quiz.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
     }
     function compute(){
       var sc={abandono:0,rechazo:0,traicion:0,humillacion:0,injusticia:0}, total=0;
-      S.forEach(function(sec,si){ sec.qs.forEach(function(qq,qi){ (ans[si+'_'+qi]||[]).forEach(function(oi){ (qq.o[oi][1]||[]).forEach(function(w){ sc[w]++; total++; }); }); }); });
+      ALL.forEach(function(item,gi){ (ans[gi]||[]).forEach(function(oi){ (item.o[oi][1]||[]).forEach(function(w){ sc[w]++; total++; }); }); });
       var order=['abandono','rechazo','traicion','humillacion','injusticia'];
       order.sort(function(a,b){return sc[b]-sc[a];});
       var top=order[0];
@@ -372,7 +382,7 @@
     }
     $('aei-test-start').addEventListener('click',function(){ cur=0; show(quiz); render(); });
     $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render();} });
-    $('aei-test-next').addEventListener('click',function(){ if(cur<S.length-1){cur++;render();} else {compute();} });
+    $('aei-test-next').addEventListener('click',function(){ if(!roundDone(cur)) return; if(cur<ROUNDS-1){cur++;render();} else {compute();} });
     $('aei-test-restart').addEventListener('click',function(){ ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
   })();
   </script>
