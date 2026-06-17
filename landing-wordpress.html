@@ -72,6 +72,18 @@
   .aei-carousel{ -ms-overflow-style:none; scrollbar-width:none; scroll-padding-left:1.25rem; }
   .aei-carousel::-webkit-scrollbar{ height:0; }
 
+  /* ===== TEST: ambiente de sanación + microinteracciones ===== */
+  #test .aei-orb{ position:absolute; border-radius:9999px; filter:blur(64px); z-index:0; pointer-events:none; }
+  @keyframes aei-breathe{ 0%,100%{ transform:scale(1) } 50%{ transform:scale(1.07) } }
+  .aei-heart{ animation:aei-breathe 3s ease-in-out infinite; }
+  .aei-chip{ transition:transform .2s ease, box-shadow .2s ease; }
+  .aei-chip:hover{ transform:translateY(-2px); box-shadow:0 10px 22px -12px rgba(214,32,126,.55); }
+  #aei-test-start{ position:relative; overflow:hidden; }
+  #aei-test-start::before{ content:""; position:absolute; top:0; left:-130%; width:55%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent); transform:skewX(-18deg); animation:aei-sheen 3.6s ease-in-out infinite; pointer-events:none; }
+  @keyframes aei-sheen{ 0%{ left:-130% } 60%,100%{ left:155% } }
+  .aei-trust{ display:inline-flex; align-items:center; gap:.4rem; }
+  @media (prefers-reduced-motion: reduce){ .aei-heart, #aei-test-start::before, #test .aei-orb, #test .animate-float{ animation:none !important; } }
+
   /* ===== SOLO CELULAR: listas como carrusel horizontal (deslizar) ===== */
   @media (max-width: 639px) {
     #problema-list, #beneficios-list, #recursos-list, #testimonios-list, #galeria-list {
@@ -203,32 +215,44 @@
   </section>
 
   <!-- ===== TEST DE HERIDAS DE LA INFANCIA ===== -->
-  <section id="test" class="bg-white py-20 sm:py-28">
-    <div class="container-x">
+  <section id="test" class="relative overflow-hidden bg-blush-radial py-20 sm:py-28">
+    <div class="aei-orb animate-float" style="width:360px;height:360px;background:#FB9ACB;top:-90px;left:-90px;opacity:.45"></div>
+    <div class="aei-orb" style="width:320px;height:320px;background:#D6207E;bottom:-70px;right:-80px;opacity:.20"></div>
+    <div class="aei-orb animate-float" style="width:200px;height:200px;background:#B5179E;top:34%;right:9%;opacity:.15;animation-delay:-3.5s"></div>
+    <div class="container-x relative z-10">
       <div class="reveal mx-auto max-w-2xl text-center">
         <span class="label">Test gratuito · Descúbrete</span>
-        <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Descubre tu <span class="gradient-text italic">herida de la infancia</span></h2>
-        <p class="mt-4 text-ink-soft">Responde con honestidad y, al terminar, sabrás cuál de las 5 heridas marca tu vida hoy — y por dónde empezar a sanarla.</p>
+        <p class="mt-3 font-script text-4xl leading-none text-brand-500 sm:text-5xl">Sanar empieza por entenderte</p>
+        <h2 class="mt-2 font-serif text-4xl font-semibold text-ink sm:text-5xl">Descubre tu <span class="gradient-text italic">herida de la infancia</span></h2>
+        <p class="mt-4 text-ink-soft">En unos 5 minutos sabrás cuál de las 5 heridas marca tu vida hoy — y cómo está afectando tu imagen y tu manera de mostrarte al mundo.</p>
       </div>
 
       <div id="aei-test" class="reveal mx-auto mt-12 max-w-3xl">
         <!-- INTRO -->
-        <div id="aei-test-intro" class="card p-8 text-center sm:p-12">
-          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-gradient text-white shadow-glow">
+        <div id="aei-test-intro" class="card relative overflow-hidden p-8 text-center sm:p-12">
+          <div class="aei-heart mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-gradient text-white shadow-glow">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.2-8.6C1.3 8.6 2.7 5.5 5.8 5.1 7.8 4.9 9.4 6 12 8.6c2.6-2.6 4.2-3.7 6.2-3.5 3.1.4 4.5 3.5 3 6.3C19 15.6 12 20 12 20z"/></svg>
           </div>
-          <h3 class="mt-6 font-serif text-3xl font-semibold text-ink">Test de Heridas de la Infancia</h3>
-          <p class="mt-3 text-ink-soft">4 secciones · unos 4 minutos · 100% privado. Tus respuestas no se guardan en ningún lado.</p>
-          <div class="mt-6 flex flex-wrap justify-center gap-2">
-            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Abandono</span>
-            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Rechazo</span>
-            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Traición</span>
-            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Humillación</span>
-            <span class="rounded-full bg-blush-100 px-3 py-1 text-xs font-semibold text-brand-700">Injusticia</span>
+          <h3 class="mt-6 font-serif text-3xl font-semibold text-ink sm:text-4xl">¿Qué herida está guiando tu vida?</h3>
+          <p class="mx-auto mt-3 max-w-md text-ink-soft">Un test de autoconocimiento para poner nombre a lo que sientes — el primer paso para sanar por dentro y reconciliarte con tu imagen por fuera.</p>
+          <div class="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-ink-soft">
+            <span class="aei-trust"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-500"><path d="M12 20s-7-4.4-9.2-8.6C1.3 8.6 2.7 5.5 5.8 5.1 7.8 4.9 9.4 6 12 8.6c2.6-2.6 4.2-3.7 6.2-3.5 3.1.4 4.5 3.5 3 6.3C19 15.6 12 20 12 20z"/></svg>Gratis</span>
+            <span class="aei-trust"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-500"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 minutos</span>
+            <span class="aei-trust"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-500"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>100% privado</span>
+            <span class="aei-trust"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="text-brand-500"><path d="M4 12.5l5 5 11-11"/></svg>Sin registro</span>
           </div>
-          <button id="aei-test-start" class="btn-primary mt-8 !px-8 !py-4 text-base">Empezar el test
+          <p class="mt-7 font-sans text-[11px] font-semibold uppercase tracking-[0.26em] text-brand-600">¿Cuál de estas 5 heridas es la tuya?</p>
+          <div class="mt-3 flex flex-wrap justify-center gap-2">
+            <span class="aei-chip rounded-full bg-blush-100 px-3.5 py-1.5 text-xs font-semibold text-brand-700">Abandono</span>
+            <span class="aei-chip rounded-full bg-blush-100 px-3.5 py-1.5 text-xs font-semibold text-brand-700">Rechazo</span>
+            <span class="aei-chip rounded-full bg-blush-100 px-3.5 py-1.5 text-xs font-semibold text-brand-700">Traición</span>
+            <span class="aei-chip rounded-full bg-blush-100 px-3.5 py-1.5 text-xs font-semibold text-brand-700">Humillación</span>
+            <span class="aei-chip rounded-full bg-blush-100 px-3.5 py-1.5 text-xs font-semibold text-brand-700">Injusticia</span>
+          </div>
+          <button id="aei-test-start" class="btn-primary mt-8 !px-9 !py-4 text-base">Empezar el test gratis
             <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-lg"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
           </button>
+          <p class="mt-4 text-xs text-ink-muted">Creado por <span class="font-semibold text-ink-soft">Leidy Sepúlveda</span> · Alma e Imagen</p>
         </div>
 
         <!-- QUIZ -->
@@ -272,10 +296,16 @@
               </div>
               <p id="aei-res-imagen" class="mt-3 text-sm leading-relaxed text-ink-soft"></p>
             </div>
-            <div class="mt-7 rounded-[1.5rem] border border-brand-200 bg-brand-50 p-6 text-center sm:p-8">
-              <p class="font-serif text-2xl font-semibold text-ink sm:text-3xl">Esto se puede sanar.</p>
-              <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-soft">En <span class="font-semibold text-ink">Alma e Imagen · The Academy</span> trabajamos exactamente esta herida en las 7 rutas — para que sanes por dentro y proyectes tu mejor versión por fuera.</p>
-              <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy" class="btn-primary mt-6 !px-8 !py-4 text-base">Quiero sanar en la academia
+            <div class="relative mt-8 overflow-hidden rounded-[1.75rem] bg-brand-gradient p-7 text-center text-white shadow-glow sm:p-9">
+              <p class="font-script text-3xl leading-none text-white/90 sm:text-4xl">Tu historia no termina aquí</p>
+              <p class="mt-2 font-serif text-2xl font-semibold sm:text-3xl">Esto se puede sanar — y acompañada es más fácil</p>
+              <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/85">En <span class="font-semibold">Alma e Imagen · The Academy</span>, Leidy Sepúlveda te guía paso a paso por las 7 rutas para sanar justo esta herida y reconciliarte con tu imagen — por dentro y por fuera.</p>
+              <div class="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/90">
+                <span class="aei-trust"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5 11-11"/></svg>7 rutas guiadas</span>
+                <span class="aei-trust"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.2-8.6C1.3 8.6 2.7 5.5 5.8 5.1 7.8 4.9 9.4 6 12 8.6c2.6-2.6 4.2-3.7 6.2-3.5 3.1.4 4.5 3.5 3 6.3C19 15.6 12 20 12 20z"/></svg>Acompañamiento de Leidy</span>
+                <span class="aei-trust"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M7 5l12 7-12 7V5z"/></svg>A tu ritmo, de por vida</span>
+              </div>
+              <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy" class="btn mt-6 bg-white !px-8 !py-4 text-base font-semibold text-brand-700 shadow-glow transition-all hover:-translate-y-0.5">Quiero sanar en la academia
                 <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-lg"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
               </a>
             </div>
