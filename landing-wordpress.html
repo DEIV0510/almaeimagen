@@ -249,12 +249,14 @@
               <p class="font-script text-2xl leading-none text-brand-600 sm:text-3xl">Sé de las primeras</p>
               <p class="mt-1 font-serif text-xl font-semibold text-ink sm:text-2xl">Lista de espera · Apertura de la academia</p>
               <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-ink-soft">Déjanos tu correo y serás de las primeras en entrar cuando abramos — con un precio especial de apertura solo para la lista. 🌸</p>
-              <form id="aei-wait-form" class="mx-auto mt-5 flex max-w-md flex-col gap-2.5">
-                <input id="aei-wait-email" type="email" required autocomplete="email" placeholder="Tu correo" class="w-full rounded-full border border-sand-300 bg-white px-5 py-3.5 font-sans text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15" />
+              <form id="aei-wait-form" class="aei-wait-form mx-auto mt-5 flex max-w-md flex-col gap-2.5">
+                <input id="aei-wait-email" type="email" required autocomplete="email" placeholder="Tu correo" class="aei-wait-email w-full rounded-full border border-sand-300 bg-white px-5 py-3.5 font-sans text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15" />
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <button type="submit" class="btn-primary w-full !py-4 text-sm">Quiero ser la primera en la academia</button>
               </form>
-              <p id="aei-wait-fine" class="mt-3 text-xs text-ink-muted">Sin spam · solo te avisamos en la apertura.</p>
-              <div id="aei-wait-ok" class="mx-auto mt-4 hidden max-w-md rounded-2xl bg-white p-4 text-sm font-semibold text-brand-700 shadow-soft">✓ ¡Listo! Estás en la lista de espera. Te escribiremos en la apertura. 🌸</div>
+              <p id="aei-wait-fine" class="aei-wait-fine mt-3 text-xs text-ink-muted">Sin spam · solo te avisamos en la apertura.</p>
+              <p class="mx-auto mt-2 max-w-md text-[11px] leading-relaxed text-ink-muted">Al dejar tu correo autorizas a Alma e Imagen · The Academy a tratar tus datos para avisarte del lanzamiento y enviarte información relacionada; puedes retirar tu consentimiento cuando quieras. <a href="#privacidad" class="underline hover:text-brand-600">Política de Privacidad</a>.</p>
+              <div id="aei-wait-ok" class="aei-wait-ok mx-auto mt-4 hidden max-w-md rounded-2xl bg-white p-4 text-sm font-semibold text-brand-700 shadow-soft">✓ ¡Listo! Estás en la lista de espera. Te escribiremos en la apertura. 🌸</div>
             </div>
             <button id="aei-test-restart" class="mx-auto mt-6 block font-sans text-sm font-semibold text-brand-700 hover:underline">↺ Repetir el test</button>
             <p class="mt-4 text-center text-xs text-ink-muted">Este test es una herramienta de autoconocimiento, no un diagnóstico clínico.</p>
@@ -489,12 +491,23 @@
     $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render(true);} });
     $('aei-test-next').addEventListener('click',function(){ if(!roundDone(cur)) return; if(cur<ROUNDS-1){cur++;render(true);} else {compute();} });
     $('aei-test-restart').addEventListener('click',function(){ ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
-    var wf=$('aei-wait-form');
-    if(wf){ wf.addEventListener('submit',function(e){ e.preventDefault(); var em=$('aei-wait-email').value.trim(); if(!em) return;
-      /* PENDIENTE: conectar servicio de correos (MailerLite/Brevo). Por ahora guarda local. */
-      try{ var L=JSON.parse(localStorage.getItem('aei_waitlist')||'[]'); if(L.indexOf(em)<0) L.push(em); localStorage.setItem('aei_waitlist',JSON.stringify(L)); }catch(_){}
-      wf.style.display='none'; var f=$('aei-wait-fine'); if(f) f.style.display='none'; var ok=$('aei-wait-ok'); if(ok) ok.classList.remove('hidden');
-    }); }
+    /* Lista de espera -> Web3Forms (correo central) + respaldo local. Reusable en todos los .aei-wait-form */
+    var WEB3_KEY='6b50bef1-57e7-402a-819f-1267fdebe1ae';
+    function aeiWaitInit(form){
+      form.addEventListener('submit',function(e){ e.preventDefault();
+        var box=form.parentElement;
+        var inp=form.querySelector('input[type=email]'); var em=(inp&&inp.value||'').trim();
+        var okB=box.querySelector('.aei-wait-ok'), fineB=box.querySelector('.aei-wait-fine');
+        var hp=form.querySelector('input[name="botcheck"]'); if(hp&&hp.checked){ return; }
+        if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ if(fineB){ fineB.textContent='Escribe un correo válido, por favor.'; } return; }
+        try{ var L=JSON.parse(localStorage.getItem('aei_waitlist')||'[]'); if(L.indexOf(em)<0) L.push(em); localStorage.setItem('aei_waitlist',JSON.stringify(L)); }catch(_){}
+        var btn=form.querySelector('button[type=submit]'); var orig=btn?btn.textContent:''; if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
+        function done(){ form.style.display='none'; if(fineB) fineB.style.display='none'; if(okB) okB.classList.remove('hidden'); if(btn){ btn.disabled=false; btn.textContent=orig; } }
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:WEB3_KEY,subject:'Nueva inscripción · Lista de espera Alma e Imagen',from_name:'Lista de espera · Alma e Imagen',email:em,botcheck:''})}).then(function(r){return r.json();}).then(done).catch(done);
+      });
+    }
+    function aeiWaitBind(){ [].forEach.call(document.querySelectorAll('.aei-wait-form'), aeiWaitInit); }
+    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', aeiWaitBind); } else { aeiWaitBind(); }
   })();
   </script>
 
@@ -622,7 +635,29 @@
       <p class="font-script text-4xl text-brand-300">Alma e Imagen</p>
       <p class="mt-1 font-sans text-[10px] font-semibold uppercase tracking-[0.42em] text-cream-50/60">The Academy · by Leidy Sepúlveda</p>
       <p class="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-cream-50/70">Una experiencia de formación emocional, espiritual y de imagen personal para mujeres que desean sanar, reconciliarse con su historia y proyectar su mejor versión.</p>
-      <p class="mt-8 text-xs text-cream-50/50">© <span id="year"></span> Alma e Imagen · The Academy — Hecho con propósito en Colombia.</p>
+
+      <!-- Lista de espera (footer, visible para todas) -->
+      <div class="mx-auto mt-10 max-w-md rounded-[1.5rem] border border-white/10 bg-white/5 p-6 text-center">
+        <p class="font-script text-2xl text-brand-300">Sé de las primeras</p>
+        <p class="mt-1 font-serif text-lg font-semibold text-cream-50">Lista de espera · Apertura de la academia</p>
+        <p class="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-cream-50/70">Déjanos tu correo y serás de las primeras en entrar cuando abramos — con precio especial de apertura. 🌸</p>
+        <form class="aei-wait-form mt-5 flex flex-col gap-2.5 sm:flex-row">
+          <input type="email" required autocomplete="email" placeholder="Tu correo" class="aei-wait-email w-full rounded-full border border-white/15 bg-white/10 px-5 py-3.5 font-sans text-sm text-cream-50 placeholder:text-cream-50/45 outline-none transition focus:border-brand-300 focus:bg-white/15" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit" class="btn-primary whitespace-nowrap !py-3.5">Unirme</button>
+        </form>
+        <p class="aei-wait-fine mt-3 text-xs text-cream-50/50">Sin spam · solo te avisamos en la apertura.</p>
+        <p class="mx-auto mt-2 max-w-sm text-[11px] leading-relaxed text-cream-50/45">Al dejar tu correo autorizas a Alma e Imagen · The Academy a tratar tus datos para avisarte del lanzamiento. <a href="#privacidad" class="underline hover:text-brand-300">Política de Privacidad</a>.</p>
+        <div class="aei-wait-ok mx-auto mt-4 hidden max-w-sm rounded-2xl bg-white/10 p-4 text-sm font-semibold text-cream-50">✓ ¡Listo! Estás en la lista de espera. Te escribiremos en la apertura. 🌸</div>
+      </div>
+
+      <p class="mt-10 text-xs text-cream-50/50">© <span id="year"></span> Alma e Imagen · The Academy — Hecho con propósito en Colombia.</p>
+
+      <!-- Política de Privacidad -->
+      <div id="privacidad" class="mx-auto mt-8 max-w-2xl scroll-mt-24 text-left">
+        <p class="text-center font-sans text-[10px] font-semibold uppercase tracking-[0.34em] text-cream-50/50">Política de Privacidad</p>
+        <p class="mt-3 text-xs leading-relaxed text-cream-50/55">Responsable: Alma e Imagen · The Academy (Leidy Sepúlveda), Colombia. El correo que nos dejas se usa únicamente para avisarte de la apertura de la academia y enviarte información relacionada; no lo vendemos ni lo compartimos con terceros. Puedes solicitar el acceso, la corrección o la eliminación de tus datos, o retirar tu consentimiento, escribiéndonos por los canales de contacto de la academia. Tratamos tus datos conforme a la Ley 1581 de 2012 (Habeas Data) de Colombia, y cada correo que enviemos incluirá una opción para darte de baja.</p>
+      </div>
     </div>
   </footer>
 
