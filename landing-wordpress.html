@@ -491,8 +491,11 @@
     $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render(true);} });
     $('aei-test-next').addEventListener('click',function(){ if(!roundDone(cur)) return; if(cur<ROUNDS-1){cur++;render(true);} else {compute();} });
     $('aei-test-restart').addEventListener('click',function(){ ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
-    /* Lista de espera -> Web3Forms (correo central) + respaldo local. Reusable en todos los .aei-wait-form */
+    /* Lista de espera -> MailerLite (bienvenida automatica) + Web3Forms (aviso/respaldo) + localStorage. Reusable en .aei-wait-form */
     var WEB3_KEY='6b50bef1-57e7-402a-819f-1267fdebe1ae';
+    var ML_URL='https://assets.mailerlite.com/jsonp/2484618/forms/191852017679861636/subscribe';
+    function aeiMLSink(){ var f=document.getElementById('aei-ml-sink'); if(f) return f; f=document.createElement('iframe'); f.name='aei-ml-sink'; f.id='aei-ml-sink'; f.style.display='none'; f.setAttribute('aria-hidden','true'); document.body.appendChild(f); return f; }
+    function aeiMLSubmit(em){ try{ aeiMLSink(); var p=document.createElement('form'); p.action=ML_URL; p.method='POST'; p.target='aei-ml-sink'; p.style.display='none'; function ad(n,v){ var i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; p.appendChild(i); } ad('fields[email]',em); ad('ml-submit','1'); ad('anticsrf','true'); document.body.appendChild(p); p.submit(); setTimeout(function(){ try{p.remove();}catch(_){}}, 5000); }catch(_){} }
     function aeiWaitInit(form){
       form.addEventListener('submit',function(e){ e.preventDefault();
         var box=form.parentElement;
@@ -501,6 +504,7 @@
         var hp=form.querySelector('input[name="botcheck"]'); if(hp&&hp.checked){ return; }
         if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ if(fineB){ fineB.textContent='Escribe un correo válido, por favor.'; } return; }
         try{ var L=JSON.parse(localStorage.getItem('aei_waitlist')||'[]'); if(L.indexOf(em)<0) L.push(em); localStorage.setItem('aei_waitlist',JSON.stringify(L)); }catch(_){}
+        aeiMLSubmit(em);
         var btn=form.querySelector('button[type=submit]'); var orig=btn?btn.textContent:''; if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
         function done(){ form.style.display='none'; if(fineB) fineB.style.display='none'; if(okB) okB.classList.remove('hidden'); if(btn){ btn.disabled=false; btn.textContent=orig; } }
         fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:WEB3_KEY,subject:'Nueva inscripción · Lista de espera Alma e Imagen',from_name:'Lista de espera · Alma e Imagen',email:em,botcheck:''})}).then(function(r){return r.json();}).then(done).catch(done);
