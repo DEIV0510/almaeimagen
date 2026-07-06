@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Alma e Imagen · The Academy — by Leidy Sepúlveda</title>
 <meta name="description" content="Una experiencia de formación emocional, espiritual y de imagen personal para mujeres que desean sanar, reconciliarse con su historia y proyectar su mejor versión." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#ED2A8C" />
+<link rel="canonical" href="https://almaeimagen.com/" />
+
+<!-- Compartir en redes / WhatsApp (Open Graph + Twitter) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Alma e Imagen · The Academy" />
+<meta property="og:locale" content="es_CO" />
+<meta property="og:title" content="Descubre tu herida de la infancia · Alma e Imagen The Academy" />
+<meta property="og:description" content="Test gratuito + academia de sanación emocional e imagen personal para mujeres, con Leidy Sepúlveda. Entra a la lista de espera de la apertura." />
+<meta property="og:url" content="https://almaeimagen.com/" />
+<meta property="og:image" content="https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png" />
+<meta property="og:image:alt" content="Leidy Sepúlveda — Alma e Imagen The Academy" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Descubre tu herida de la infancia · Alma e Imagen The Academy" />
+<meta name="twitter:description" content="Test gratuito + academia de sanación emocional e imagen personal. Lista de espera abierta." />
+<meta name="twitter:image" content="https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png" />
+
+<!-- Prioriza la imagen del hero (LCP) -->
+<link rel="preload" as="image" href="https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png" fetchpriority="high" />
+
+<!-- Datos estructurados -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://almaeimagen.com/#org","name":"Alma e Imagen · The Academy","url":"https://almaeimagen.com/","logo":"https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png","founder":{"@type":"Person","name":"Leidy Sepúlveda"},"areaServed":"CO"},{"@type":"WebSite","@id":"https://almaeimagen.com/#website","name":"Alma e Imagen · The Academy","url":"https://almaeimagen.com/","inLanguage":"es-CO","publisher":{"@id":"https://almaeimagen.com/#org"}}]}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -113,6 +136,9 @@
       flex: 0 0 82%;
       min-width: 82%;
       scroll-snap-align: center;
+      /* FIX: fuera de vista en el carrusel nunca disparan el IntersectionObserver → forzar visibles */
+      opacity: 1 !important;
+      transform: none !important;
     }
     #recursos-list > * { flex-basis: 64%; min-width: 64%; }
     /* pista visual de que se puede deslizar */
@@ -199,7 +225,7 @@
           </div>
           <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-cream-200"><div id="aei-test-progress-bar" class="h-full rounded-full bg-gold-gradient transition-all duration-500" style="width:0%"></div></div>
           <h3 id="aei-test-section-title" class="mt-7 font-serif text-2xl font-semibold text-ink sm:text-3xl"></h3>
-          <p id="aei-test-section-intro" class="mt-2 text-sm text-ink-soft"></p>
+          <p id="aei-test-section-intro" aria-live="polite" class="mt-2 text-sm text-ink-soft"></p>
           <div id="aei-test-questions" class="mt-7 space-y-8"></div>
           <div class="mt-9 flex items-center justify-between gap-3">
             <button id="aei-test-back" class="btn-ghost text-sm">← Atrás</button>
@@ -250,13 +276,14 @@
               <p class="mt-1 font-serif text-xl font-semibold text-ink sm:text-2xl">Lista de espera · Apertura de la academia</p>
               <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-ink-soft">Déjanos tu correo y serás de las primeras en entrar cuando abramos — con un precio especial de apertura solo para la lista. 🌸</p>
               <form id="aei-wait-form" class="aei-wait-form mx-auto mt-5 flex max-w-md flex-col gap-2.5">
-                <input id="aei-wait-email" type="email" required autocomplete="email" placeholder="Tu correo" class="aei-wait-email w-full rounded-full border border-sand-300 bg-white px-5 py-3.5 font-sans text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15" />
+                <label for="aei-wait-email" class="sr-only">Correo electrónico</label>
+                <input id="aei-wait-email" type="email" required autocomplete="email" aria-label="Correo electrónico" aria-describedby="aei-wait-fine" placeholder="Tu correo" class="aei-wait-email w-full rounded-full border border-sand-300 bg-white px-5 py-3.5 font-sans text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15" />
                 <input type="checkbox" name="botcheck" class="hidden" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <button type="submit" class="btn-primary w-full !py-4 text-sm">Quiero ser la primera en la academia</button>
               </form>
               <p id="aei-wait-fine" class="aei-wait-fine mt-3 text-xs text-ink-muted">Sin spam · solo te avisamos en la apertura.</p>
               <p class="mx-auto mt-2 max-w-md text-[11px] leading-relaxed text-ink-muted">Al dejar tu correo autorizas a Alma e Imagen · The Academy a tratar tus datos para avisarte del lanzamiento y enviarte información relacionada; puedes retirar tu consentimiento cuando quieras. <a href="#privacidad" class="underline hover:text-brand-600">Política de Privacidad</a>.</p>
-              <div id="aei-wait-ok" class="aei-wait-ok mx-auto mt-4 hidden max-w-md rounded-2xl bg-white p-4 text-sm font-semibold text-brand-700 shadow-soft">✓ ¡Listo! Estás en la lista de espera. Te escribiremos en la apertura. 🌸</div>
+              <div id="aei-wait-ok" role="status" class="aei-wait-ok mx-auto mt-4 hidden max-w-md rounded-2xl bg-white p-4 text-sm font-semibold text-brand-700 shadow-soft">✓ ¡Casi lista! Te enviamos un correo para <span class="underline">confirmar tu suscripción</span>. Revisa tu bandeja (y Spam/Promociones) y toca el botón para quedar en la lista. 🌸</div>
             </div>
             <button id="aei-test-restart" class="mx-auto mt-6 block font-sans text-sm font-semibold text-brand-700 hover:underline">↺ Repetir el test</button>
             <p class="mt-4 text-center text-xs text-ink-muted">Este test es una herramienta de autoconocimiento, no un diagnóstico clínico.</p>
@@ -290,7 +317,7 @@
               <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
               <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="text-sm"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>
             </div>
-            <p class="text-sm font-medium text-ink-soft">+500 mujeres en transformación</p>
+            <p class="text-sm font-medium text-ink-soft">Acompañamiento cercano de Leidy Sepúlveda</p>
           </div>
           <span class="hidden h-5 w-px bg-sand-300 sm:block"></span>
           <p class="text-sm font-medium text-ink-soft">7 módulos · 54 clases</p>
@@ -299,7 +326,7 @@
       <!-- Cover -->
       <div class="relative mx-auto w-full max-w-md animate-float order-1 lg:order-2">
         <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-sand-200 shadow-card">
-          <img src="https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png" alt="Leidy Sepúlveda — Alma e Imagen The Academy" class="absolute inset-0 h-full w-full object-cover object-top" />
+          <img src="https://almaeimagen.com/wp-content/uploads/2026/06/leidy3.png" alt="Leidy Sepúlveda — Alma e Imagen The Academy" fetchpriority="high" decoding="async" class="absolute inset-0 h-full w-full object-cover object-top" />
           <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(42,22,34,0) 42%, rgba(42,22,34,.6) 100%)"></div>
           <div class="absolute inset-x-0 bottom-0 p-8">
             <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.4em] text-cream-50/80">The Academy</span>
@@ -400,7 +427,7 @@
     ];
     var ALL=[]; S.forEach(function(sec){ sec.qs.forEach(function(qq){ ALL.push({sec:sec.t, q:qq.q, m:qq.m, o:qq.o, img:qq.img}); }); });
     var PER=5, ROUNDS=Math.ceil(ALL.length/PER);
-    var cur=0, ans={};
+    var cur=0, ans={}, riskIv=null;
     function answered(gi){ return ans[gi] && ans[gi].length>0; }
     function roundDone(r){ var s=r*PER, e=Math.min(s+PER, ALL.length); for(var i=s;i<e;i++){ if(!answered(i)) return false; } return true; }
     function countAnswered(){ var n=0; for(var i=0;i<ALL.length;i++){ if(answered(i)) n++; } return n; }
@@ -443,7 +470,7 @@
       nb.style.cursor = done ? 'pointer' : 'not-allowed';
       var hint=$('aei-test-section-intro');
       hint.textContent = done ? '✓ ¡Listo! Ya puedes continuar.' : 'Responde las '+(end-start)+' preguntas de esta parte para continuar.';
-      hint.style.color = done ? '#16a34a' : '#8A7280';
+      hint.style.color = done ? '#15803d' : '#8A7280';
       if(scroll){ try{ quiz.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){} }
     }
     function compute(){
@@ -481,33 +508,42 @@
       $('aei-res-risk-bar').style.width=(reduce?riskPct:0)+'%';
       show(result);
       try{ $('test').scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){}
+      if(riskIv){ clearInterval(riskIv); riskIv=null; }
       if(!reduce){ setTimeout(function(){
         $('aei-res-risk-bar').style.width=riskPct+'%';
         [].forEach.call(bars.querySelectorAll('[data-pct]'), function(el,i){ setTimeout(function(){ el.style.width=el.getAttribute('data-pct')+'%'; }, 130+i*90); });
-        var n=0, sp=$('aei-res-risk-pct'), iv=setInterval(function(){ n+=Math.max(1,Math.ceil(riskPct/26)); if(n>=riskPct){ n=riskPct; clearInterval(iv); } sp.textContent=n+'% de tus respuestas reflejan una herida activa'; }, 32);
+        var n=0, sp=$('aei-res-risk-pct'); riskIv=setInterval(function(){ n+=Math.max(1,Math.ceil(riskPct/26)); if(n>=riskPct){ n=riskPct; clearInterval(riskIv); riskIv=null; } sp.textContent=n+'% de tus respuestas reflejan una herida activa'; }, 32);
       }, 140); }
     }
-    $('aei-test-start').addEventListener('click',function(){ cur=0; show(quiz); render(true); });
+    $('aei-test-start').addEventListener('click',function(){ if(riskIv){clearInterval(riskIv);riskIv=null;} cur=0; show(quiz); render(true); });
     $('aei-test-back').addEventListener('click',function(){ if(cur>0){cur--;render(true);} });
     $('aei-test-next').addEventListener('click',function(){ if(!roundDone(cur)) return; if(cur<ROUNDS-1){cur++;render(true);} else {compute();} });
-    $('aei-test-restart').addEventListener('click',function(){ ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
+    $('aei-test-restart').addEventListener('click',function(){ if(riskIv){clearInterval(riskIv);riskIv=null;} ans={}; cur=0; show(intro); try{$('test').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){} });
     /* Lista de espera -> MailerLite (bienvenida automatica) + Web3Forms (aviso/respaldo) + localStorage. Reusable en .aei-wait-form */
     var WEB3_KEY='6b50bef1-57e7-402a-819f-1267fdebe1ae';
     var ML_URL='https://assets.mailerlite.com/jsonp/2484618/forms/191852017679861636/subscribe';
-    function aeiMLSink(){ var f=document.getElementById('aei-ml-sink'); if(f) return f; f=document.createElement('iframe'); f.name='aei-ml-sink'; f.id='aei-ml-sink'; f.style.display='none'; f.setAttribute('aria-hidden','true'); document.body.appendChild(f); return f; }
-    function aeiMLSubmit(em){ try{ aeiMLSink(); var p=document.createElement('form'); p.action=ML_URL; p.method='POST'; p.target='aei-ml-sink'; p.style.display='none'; function ad(n,v){ var i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; p.appendChild(i); } ad('fields[email]',em); ad('ml-submit','1'); ad('anticsrf','true'); document.body.appendChild(p); p.submit(); setTimeout(function(){ try{p.remove();}catch(_){}}, 5000); }catch(_){} }
+    function aeiMLSink(){ var f=document.getElementById('aei-ml-sink'); if(f) return f; f=document.createElement('iframe'); f.name='aei-ml-sink'; f.id='aei-ml-sink'; f.title='MailerLite'; f.style.display='none'; f.setAttribute('aria-hidden','true'); document.body.appendChild(f); return f; }
+    function aeiMLSubmit(em, cb){ var fired=false; function fire(){ if(fired) return; fired=true; if(cb) cb(); } try{ var f=aeiMLSink(); f.onload=function(){ fire(); }; var p=document.createElement('form'); p.action=ML_URL; p.method='POST'; p.target='aei-ml-sink'; p.style.display='none'; function ad(n,v){ var i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; p.appendChild(i); } ad('fields[email]',em); ad('ml-submit','1'); ad('anticsrf','true'); document.body.appendChild(p); p.submit(); setTimeout(function(){ try{p.remove();}catch(_){}}, 6000); }catch(_){} setTimeout(fire, 4500); }
     function aeiWaitInit(form){
+      var fine0=null;
       form.addEventListener('submit',function(e){ e.preventDefault();
         var box=form.parentElement;
         var inp=form.querySelector('input[type=email]'); var em=(inp&&inp.value||'').trim();
         var okB=box.querySelector('.aei-wait-ok'), fineB=box.querySelector('.aei-wait-fine');
+        if(fineB && fine0===null){ fine0=fineB.textContent; }
+        if(fineB){ fineB.textContent=(fine0!==null?fine0:fineB.textContent); fineB.style.color=''; fineB.removeAttribute('role'); }
+        if(inp){ inp.removeAttribute('aria-invalid'); }
         var hp=form.querySelector('input[name="botcheck"]'); if(hp&&hp.checked){ return; }
-        if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ if(fineB){ fineB.textContent='Escribe un correo válido, por favor.'; } return; }
-        try{ var L=JSON.parse(localStorage.getItem('aei_waitlist')||'[]'); if(L.indexOf(em)<0) L.push(em); localStorage.setItem('aei_waitlist',JSON.stringify(L)); }catch(_){}
-        aeiMLSubmit(em);
+        if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ if(fineB){ fineB.textContent='Escribe un correo válido, por favor.'; fineB.style.color='#b91c1c'; fineB.setAttribute('role','alert'); } if(inp){ inp.setAttribute('aria-invalid','true'); inp.focus(); } return; }
+        var known=false;
+        try{ var L=JSON.parse(localStorage.getItem('aei_waitlist')||'[]'); if(L.indexOf(em)>-1){ known=true; } else { L.push(em); localStorage.setItem('aei_waitlist',JSON.stringify(L)); } }catch(_){}
         var btn=form.querySelector('button[type=submit]'); var orig=btn?btn.textContent:''; if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
-        function done(){ form.style.display='none'; if(fineB) fineB.style.display='none'; if(okB) okB.classList.remove('hidden'); if(btn){ btn.disabled=false; btn.textContent=orig; } }
-        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:WEB3_KEY,subject:'Nueva inscripción · Lista de espera Alma e Imagen',from_name:'Lista de espera · Alma e Imagen',email:em,botcheck:''})}).then(function(r){return r.json();}).then(done).catch(done);
+        var finished=false;
+        function done(){ if(finished) return; finished=true; form.style.display='none'; if(fineB) fineB.style.display='none'; if(okB) okB.classList.remove('hidden'); if(btn){ btn.disabled=false; btn.textContent=orig; } }
+        if(known){ done(); return; } /* ya inscrita en este navegador: no reenviar la confirmacion */
+        aeiMLSubmit(em, done);
+        setTimeout(done, 5500); /* respaldo por si el iframe no dispara load */
+        try{ fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:WEB3_KEY,subject:'Nueva inscripción · Lista de espera Alma e Imagen',from_name:'Lista de espera · Alma e Imagen',email:em,botcheck:''})}).then(function(r){return r.json();}).then(done).catch(function(){}); }catch(_){}
       });
     }
     function aeiWaitBind(){ [].forEach.call(document.querySelectorAll('.aei-wait-form'), aeiWaitInit); }
@@ -623,18 +659,19 @@
     <div class="reveal relative overflow-hidden rounded-[2.25rem] bg-brand-gradient px-8 py-16 text-center text-cream-50 sm:px-16 sm:py-20">
       <div class="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-brand-500/30 blur-3xl"></div>
       <div id="lista-espera" class="relative z-10 scroll-mt-24">
-        <span class="font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-200">La academia está por abrir</span>
+        <span class="font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-cream-50/90">La academia está por abrir</span>
         <p class="mt-3 font-script text-5xl leading-none text-brand-200 sm:text-6xl">Sé de las primeras</p>
         <h2 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">Lista de espera · Apertura</h2>
         <p class="mx-auto mt-5 max-w-xl text-cream-100/85">Déjanos tu correo y serás de las primeras en entrar cuando abramos — con un <span class="font-semibold text-cream-50">precio especial de apertura</span> solo para la lista de espera. 🌸</p>
         <form class="aei-wait-form mx-auto mt-8 flex max-w-md flex-col gap-3">
-          <input type="email" required autocomplete="email" placeholder="Tu correo" class="aei-wait-email w-full rounded-full border border-white/25 bg-white/15 px-5 py-4 text-center font-sans text-sm text-cream-50 placeholder:text-cream-50/60 outline-none transition focus:border-white focus:bg-white/25" />
+          <label for="aei-wait-email-2" class="sr-only">Correo electrónico</label>
+          <input id="aei-wait-email-2" type="email" required autocomplete="email" aria-label="Correo electrónico" placeholder="Tu correo" class="aei-wait-email w-full rounded-full border border-white/40 bg-white/20 px-5 py-4 text-center font-sans text-sm text-white placeholder:text-white/85 outline-none transition focus:border-white focus:bg-white/30" />
           <input type="checkbox" name="botcheck" class="hidden" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button type="submit" class="btn w-full justify-center bg-cream-50 !px-7 !py-4 text-base font-semibold text-brand-700 shadow-glow transition-transform hover:-translate-y-0.5">Quiero ser la primera en la academia</button>
         </form>
-        <p class="aei-wait-fine mt-4 text-xs text-cream-100/70">Sin spam · solo te avisamos en la apertura.</p>
-        <p class="mx-auto mt-2 max-w-md text-[11px] leading-relaxed text-cream-100/60">Al dejar tu correo autorizas a Alma e Imagen · The Academy a tratar tus datos para avisarte del lanzamiento. <a href="#privacidad" class="underline hover:text-white">Política de Privacidad</a>.</p>
-        <div class="aei-wait-ok mx-auto mt-5 hidden max-w-md rounded-2xl bg-white/15 p-4 text-sm font-semibold text-cream-50">✓ ¡Listo! Estás en la lista de espera. Te escribiremos en la apertura. 🌸</div>
+        <p class="aei-wait-fine mt-4 text-xs text-cream-100/90">Sin spam · solo te avisamos en la apertura.</p>
+        <p class="mx-auto mt-2 max-w-md text-[11px] leading-relaxed text-cream-100/85">Al dejar tu correo autorizas a Alma e Imagen · The Academy a tratar tus datos para avisarte del lanzamiento. <a href="#privacidad" class="underline hover:text-white">Política de Privacidad</a>.</p>
+        <div role="status" class="aei-wait-ok mx-auto mt-5 hidden max-w-md rounded-2xl bg-white/20 p-4 text-sm font-semibold text-white">✓ ¡Casi lista! Te enviamos un correo para <span class="underline">confirmar tu suscripción</span>. Revisa tu bandeja (y Spam/Promociones) y toca el botón para quedar en la lista. 🌸</div>
       </div>
     </div>
   </section>
@@ -659,7 +696,7 @@
   <!-- ===== MODAL de módulo / ruta ===== -->
   <div id="aei-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-ink/60 backdrop-blur-sm" onclick="aeiCerrar()"></div>
-    <div class="relative z-10 max-h-[88vh] w-full max-w-lg overflow-y-auto rounded-[1.75rem] bg-white p-8 shadow-glow sm:p-9">
+    <div id="aei-modal-panel" role="dialog" aria-modal="true" aria-label="Detalle de la ruta" tabindex="-1" class="relative z-10 max-h-[88vh] w-full max-w-lg overflow-y-auto rounded-[1.75rem] bg-white p-8 shadow-glow outline-none sm:p-9">
       <button type="button" onclick="aeiCerrar()" aria-label="Cerrar" class="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-cream-100 text-ink-soft transition-colors hover:bg-brand-100 hover:text-brand-700">✕</button>
       <div id="aei-modal-body"></div>
       <a href="#lista-espera" onclick="aeiCerrar()" class="btn-primary mt-7 w-full justify-center">Quiero ser la primera en la academia</a>
@@ -682,9 +719,9 @@
   var BENEFICIOS = ["Comprender tu historia personal con claridad y compasión","Sanar heridas emocionales de raíz","Fortalecer tu amor propio","Regular tus emociones","Reconocer y potenciar tu imagen personal","Vestirte según tu cuerpo, rostro y colorimetría","Proyectar seguridad, elegancia y autenticidad","Construir una nueva versión de ti misma"];
   var RECURSOS = ["Videos formativos","Talleres descargables","Audios terapéuticos","Retos prácticos","Guías de imagen personal","Instructivos visuales","Ejercicios de autoconocimiento","Acompañamiento por módulos"];
   var TESTIMONIOS = [
-    { q:"Entré buscando cambiar mi imagen y terminé sanando heridas que cargué por años. Hoy me miro distinto.", n:"Valentina R.", r:"Alumna de la academia", i:"VR" },
-    { q:"El módulo de Raíces me removió por completo. Por primera vez entendí mi historia y pude soltarla con amor.", n:"Daniela M.", r:"Alumna de la academia", i:"DM" },
-    { q:"Leidy acompaña desde el alma. Aprendí a perdonar, a quererme y, además, a vestirme y proyectarme con seguridad.", n:"Carolina P.", r:"Alumna de la academia", i:"CP" },
+    { q:"Entré buscando cambiar mi imagen y terminé sanando heridas que cargué por años. Hoy me miro distinto.", n:"Valentina R.", r:"En acompañamiento con Leidy", i:"VR" },
+    { q:"Con Leidy entendí por primera vez mi historia y pude soltarla con amor. Su acompañamiento me transformó.", n:"Daniela M.", r:"En acompañamiento con Leidy", i:"DM" },
+    { q:"Leidy acompaña desde el alma. Aprendí a perdonar, a quererme y, además, a vestirme y proyectarme con seguridad.", n:"Carolina P.", r:"En acompañamiento con Leidy", i:"CP" },
   ];
 
   var check = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>';
@@ -734,6 +771,16 @@
   }).join("");
 
   // Modal con la info de cada módulo/ruta (frase ancla + objetivo + lo que incluye)
+  var aeiModalPrevFocus = null;
+  function aeiTrap(e){
+    if(e.key !== "Tab") return;
+    var panel = document.getElementById("aei-modal-panel");
+    var f = panel.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    if(!f.length) return;
+    var first = f[0], last = f[f.length-1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
   function aeiModulo(i){
     var m = MODULOS[i];
     var lessons = m.c.map(function(l){ return '<li class="flex items-start gap-2 text-sm text-ink-soft"><span class="mt-0.5 shrink-0 text-base text-brand-600">'+check+'</span>'+l+'</li>'; }).join("");
@@ -744,12 +791,23 @@
       '<p class="mt-4 text-sm leading-relaxed text-ink-soft"><span class="font-semibold text-ink">Objetivo:</span> '+m.g+'</p>'+
       '<p class="mt-6 font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-ink-soft">Lo que incluye</p>'+
       '<ul class="mt-3 grid gap-x-5 gap-y-2 sm:grid-cols-2">'+lessons+'</ul>';
+    aeiModalPrevFocus = document.activeElement;
     document.getElementById("aei-modal").classList.remove("hidden");
     document.body.style.overflow = "hidden";
+    var panel = document.getElementById("aei-modal-panel");
+    panel.addEventListener("keydown", aeiTrap);
+    setTimeout(function(){ var cb = panel.querySelector("button"); (cb || panel).focus(); }, 0);
     return false;
   }
-  function aeiCerrar(){ document.getElementById("aei-modal").classList.add("hidden"); document.body.style.overflow = ""; }
-  document.addEventListener("keydown", function(e){ if(e.key === "Escape") aeiCerrar(); });
+  function aeiCerrar(){
+    document.getElementById("aei-modal").classList.add("hidden");
+    document.body.style.overflow = "";
+    var panel = document.getElementById("aei-modal-panel");
+    if(panel) panel.removeEventListener("keydown", aeiTrap);
+    if(aeiModalPrevFocus && aeiModalPrevFocus.focus){ try{ aeiModalPrevFocus.focus(); }catch(_){} }
+    aeiModalPrevFocus = null;
+  }
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !document.getElementById("aei-modal").classList.contains("hidden")) aeiCerrar(); });
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Reveal on scroll
