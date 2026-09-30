@@ -101,6 +101,36 @@
   .aei-nav-pill{display:none;align-items:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:14px;line-height:1;color:#B5179E;background:linear-gradient(90deg,#FFF0F7,#FCE7F1);border:1px solid rgba(214,32,126,.3);border-radius:9999px;padding:6px 14px;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
   .aei-nav-pill:hover{background:linear-gradient(90deg,#ED2A8C,#B5179E);color:#fff;border-color:transparent}
   @media (min-width:1240px){ .aei-nav-pill{display:inline-flex} }
+
+  /* Acceso de alumnas: "Ingresar" (lleva al curso → login rosa, con opción de crear cuenta) */
+  .aei-nav-end{display:flex;align-items:center;gap:18px;flex:none}
+  .aei-login{display:inline-flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;color:#AE1565;text-decoration:none;white-space:nowrap;transition:color .2s}
+  .aei-login svg{width:17px;height:17px;flex:none}
+  .aei-login:hover{color:#D6207E}
+  .aei-cta-short{display:none}
+  .aei-wait-login{margin-top:22px;font-size:13px;color:rgba(255,248,251,.92)}
+  .aei-wait-login a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  @media (max-width:639.98px){
+    #nav nav{padding-left:16px;padding-right:16px;gap:8px}
+    #nav nav > a:first-child{flex:none}
+    #nav nav > a:first-child > span:first-child{font-size:24px;white-space:nowrap}
+    .aei-nav-end{gap:6px}
+    .aei-login{width:36px;height:36px;justify-content:center;border:1px solid rgba(214,32,126,.35);border-radius:9999px;background:#fff}
+    .aei-login svg{width:18px;height:18px}
+    .aei-login span{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .aei-nav-cta{font-size:11px !important;padding:10px 12px !important;white-space:nowrap}
+    .aei-nav-cta svg{display:none}
+  }
+  @media (max-width:374.98px){
+    .aei-cta-long{display:none}
+    .aei-cta-short{display:inline}
+  }
+  @media (max-width:339.98px){
+    #nav nav{padding-left:12px;padding-right:12px}
+    #nav nav > a:first-child > span:first-child{font-size:21px}
+    .aei-login{width:32px;height:32px}
+    .aei-nav-cta{font-size:10.5px !important;padding:10px !important}
+  }
 </style>
 </head>
 <body class="font-sans">
@@ -120,9 +150,15 @@
       <a href="https://perderte.almaeimagen.com" class="aei-nav-pill">Perderte a ti</a>
       <a href="https://habitarte.almaeimagen.com" class="aei-nav-pill">Habitarte</a>
     </div>
-    <a href="#lista-espera" class="btn-primary text-xs">Quiero ser la primera
-      <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-base"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
-    </a>
+    <div class="aei-nav-end">
+      <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy/" class="aei-login" aria-label="Ingresar: inicia sesión o crea tu cuenta" title="¿Ya eres alumna? Inicia sesión o crea tu cuenta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-3.8 4.2-5.8 7.5-5.8s6.3 2 7.5 5.8"/></svg>
+        <span>Ingresar</span>
+      </a>
+      <a href="#lista-espera" class="btn-primary text-xs aei-nav-cta"><span class="aei-cta-long">Quiero ser la primera</span><span class="aei-cta-short">Sé de las primeras</span>
+        <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-base"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+      </a>
+    </div>
   </nav>
 </header>
 
@@ -701,6 +737,7 @@
         <p class="aei-wait-fine mt-4 text-xs text-cream-100/90">Sin spam · solo te avisamos en la apertura.</p>
         <p class="mx-auto mt-2 max-w-md text-[11px] leading-relaxed text-cream-100/85">Al dejar tu correo autorizas a Alma e Imagen · The Academy a tratar tus datos para avisarte del lanzamiento. <a href="#privacidad" class="underline hover:text-white">Política de Privacidad</a>.</p>
         <div role="status" class="aei-wait-ok mx-auto mt-5 hidden max-w-md rounded-2xl bg-white/20 p-4 text-sm font-semibold text-white">✓ ¡Casi lista! Te enviamos un correo para <span class="underline">confirmar tu suscripción</span>. Revisa tu bandeja (y Spam/Promociones) y toca el botón para quedar en la lista. 🌸</div>
+        <p class="aei-wait-login">¿Ya eres alumna? <a href="https://almaeimagen.com/courses/alma-e-imagen-the-academy/">Inicia sesión o crea tu cuenta →</a></p>
       </div>
     </div>
   </section>
