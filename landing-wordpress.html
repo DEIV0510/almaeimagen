@@ -125,6 +125,35 @@
     .aei-cta-long{display:none}
     .aei-cta-short{display:inline}
   }
+
+  /* Productos y servicios: tarjetas que llevan a las landings de cada producto */
+  .aei-prod-sec{padding-bottom:80px}
+  .aei-prod-head{text-align:center;max-width:40rem;margin:0 auto 40px}
+  .aei-prod-title{margin-top:12px;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1.1;font-weight:600;color:#2A1622;text-wrap:balance}
+  .aei-prod-sub{margin-top:12px;font-size:15px;line-height:1.6;color:#5C4150}
+  .aei-prod-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:960px;margin:0 auto}
+  .aei-prod-item{display:flex}
+  .aei-prod-card{flex:1;display:flex;flex-direction:column;border-radius:2rem;overflow:hidden;background:#fff;border:1px solid #FDD7E9;box-shadow:0 26px 60px -30px rgba(42,22,34,.2);text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .aei-prod-card:hover{transform:translateY(-4px);border-color:#F5A3CB;box-shadow:0 30px 70px -30px rgba(214,32,126,.35)}
+  .aei-prod-card:focus-visible{outline:2px solid #D6207E;outline-offset:4px}
+  .aei-prod-cover{display:flex;align-items:center;justify-content:center;padding:28px 24px;background:radial-gradient(80% 90% at 50% 20%,#FFE1F0 0%,#FFF6FA 70%)}
+  .aei-prod-cover img{display:block;height:240px;width:auto;border-radius:6px;box-shadow:0 22px 44px -18px rgba(42,22,34,.5)}
+  .aei-prod-body{display:flex;flex:1;flex-direction:column;gap:8px;padding:22px 24px 26px}
+  .aei-prod-type{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#AE1565}
+  .aei-prod-name{font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.15;font-weight:600;color:#2A1622}
+  .aei-prod-desc{font-size:14.5px;line-height:1.6;color:#5C4150}
+  .aei-prod-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:14px}
+  .aei-prod-price{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1;font-weight:600;color:#2A1622}
+  .aei-prod-cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:9999px;background:#D6207E;color:#fff;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:.02em;box-shadow:0 20px 55px -20px rgba(237,42,140,.4);transition:background-color .3s}
+  .aei-prod-cta svg{width:16px;height:16px;flex:none}
+  .aei-prod-card:hover .aei-prod-cta{background:#AE1565}
+  @media (min-width:768px){
+    .aei-prod-sec{padding-bottom:112px}
+    .aei-prod-title{font-size:44px}
+    .aei-prod-grid{grid-template-columns:1fr 1fr;gap:28px}
+    .aei-prod-cover img{height:280px}
+  }
+  @media (prefers-reduced-motion:reduce){ .aei-prod-card{transition:none} .aei-prod-card:hover{transform:none} }
   @media (max-width:339.98px){
     #nav nav{padding-left:12px;padding-right:12px}
     #nav nav > a:first-child > span:first-child{font-size:21px}
@@ -717,6 +746,49 @@
       <h2 class="mt-3 font-serif text-4xl font-semibold text-ink sm:text-5xl">Historias que renacen</h2>
     </div>
     <div class="mt-14 grid gap-6 md:grid-cols-3" id="testimonios-list"></div>
+  </section>
+
+  <!-- ===== PRODUCTOS Y SERVICIOS (landings de cada producto) ===== -->
+  <section id="productos" class="aei-prod-sec container-x">
+    <div class="aei-prod-head reveal">
+      <span class="label">Alma e Imagen</span>
+      <h2 class="aei-prod-title">Conoce aquí nuestros productos y servicios</h2>
+      <p class="aei-prod-sub">Guías y cuadernos de Leidy Sepúlveda para seguir tu proceso a tu ritmo.</p>
+    </div>
+    <div class="aei-prod-grid">
+      <div class="aei-prod-item reveal">
+        <a href="https://perderte.almaeimagen.com" class="aei-prod-card">
+          <span class="aei-prod-cover"><img src="https://perderte.almaeimagen.com/assets/cover.webp" width="800" height="1035" loading="lazy" decoding="async" alt="Portada de la guía «Perderte a ti, fue encontrarme a mí»" /></span>
+          <span class="aei-prod-body">
+            <span class="aei-prod-type">Guía digital · PDF</span>
+            <span class="aei-prod-name">Perderte a ti, fue encontrarme a mí</span>
+            <span class="aei-prod-desc">Una guía terapéutica de 40 páginas para volver a ti después de una ruptura: 5 fases y ejercicios reales para reconstruirte y elegir distinto.</span>
+            <span class="aei-prod-foot">
+              <span class="aei-prod-price">$17</span>
+              <span class="aei-prod-cta">Conocer la guía
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+      <div class="aei-prod-item reveal">
+        <a href="https://habitarte.almaeimagen.com" class="aei-prod-card">
+          <span class="aei-prod-cover"><img src="https://habitarte.almaeimagen.com/assets/cover.webp" width="800" height="1131" loading="lazy" decoding="async" alt="Portada del cuaderno «El Arte de Habitarte»" /></span>
+          <span class="aei-prod-body">
+            <span class="aei-prod-type">Cuaderno digital · PDF</span>
+            <span class="aei-prod-name">El Arte de Habitarte</span>
+            <span class="aei-prod-desc">Cuaderno terapéutico de arteterapia y regulación del sistema nervioso: 24 actividades para sanar por dentro y proyectar tu belleza real.</span>
+            <span class="aei-prod-foot">
+              <span class="aei-prod-price">$7</span>
+              <span class="aei-prod-cta">Conocer el cuaderno
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- ===== CTA / INSCRIPCIÓN ===== -->
