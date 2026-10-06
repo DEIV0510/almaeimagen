@@ -125,28 +125,6 @@
     .aei-cta-long{display:none}
     .aei-cta-short{display:inline}
   }
-
-  /* Herramienta de colorimetría (colorimetria.almaeimagen.com), bajo el test */
-  .aei-color-sec{background:#FFF6FA;padding:8px 0 64px}
-  .aei-color-card{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;max-width:860px;margin:0 auto;padding:28px 22px;border-radius:2rem;background:#fff;border:1px solid #FDD7E9;box-shadow:0 26px 60px -30px rgba(42,22,34,.2);text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .3s}
-  .aei-color-card:hover{transform:translateY(-3px);border-color:#F5A3CB;box-shadow:0 30px 70px -30px rgba(214,32,126,.35)}
-  .aei-color-card:focus-visible{outline:2px solid #D6207E;outline-offset:4px}
-  .aei-color-wheel{position:relative;flex:none;width:96px;height:96px;border-radius:50%;background:conic-gradient(from -90deg,#1F9D63 0 10%,#22B5D3 10% 20%,#1E78B4 20% 30%,#F7F2EE 30% 40%,#231A20 40% 50%,#5A2BD2 50% 60%,#E2CF22 60% 70%,#B79AA6 70% 80%,#8FA99B 80% 90%,#D6207E 90% 100%);box-shadow:0 0 0 5px #fff,0 14px 34px -14px rgba(42,22,34,.45)}
-  .aei-color-wheel::after{content:"";position:absolute;inset:27%;border-radius:50%;background:#FFF6FA;box-shadow:inset 0 0 0 1px #FDD7E9}
-  .aei-color-body{display:flex;flex-direction:column;align-items:center;gap:8px}
-  .aei-color-title{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.1;font-weight:600;color:#2A1622}
-  .aei-color-text{max-width:30rem;font-size:15px;line-height:1.6;color:#5C4150}
-  .aei-color-cta{display:inline-flex;align-items:center;gap:8px;margin-top:8px;min-height:44px;padding:0 22px;border-radius:9999px;background:#D6207E;color:#fff;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;letter-spacing:.02em;box-shadow:0 20px 55px -20px rgba(237,42,140,.4);transition:background-color .3s}
-  .aei-color-cta svg{width:16px;height:16px;flex:none}
-  .aei-color-card:hover .aei-color-cta{background:#AE1565}
-  @media (min-width:640px){
-    .aei-color-sec{padding:16px 0 88px}
-    .aei-color-card{flex-direction:row;text-align:left;gap:32px;padding:32px 40px}
-    .aei-color-wheel{width:132px;height:132px}
-    .aei-color-body{align-items:flex-start}
-    .aei-color-title{font-size:34px}
-  }
-  @media (prefers-reduced-motion:reduce){ .aei-color-card{transition:none} .aei-color-card:hover{transform:none} }
   @media (max-width:339.98px){
     #nav nav{padding-left:12px;padding-right:12px}
     #nav nav > a:first-child > span:first-child{font-size:21px}
@@ -376,25 +354,6 @@
             <p class="mt-4 text-center text-xs text-ink-muted">Este test es una herramienta de autoconocimiento, no un diagnóstico clínico.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HERRAMIENTA: COLORIMETRÍA (colorimetria.almaeimagen.com) ===== -->
-  <section id="colorimetria" class="aei-color-sec">
-    <div class="container-x">
-      <div class="reveal">
-        <a href="https://colorimetria.almaeimagen.com" class="aei-color-card">
-          <span class="aei-color-wheel" aria-hidden="true"></span>
-          <span class="aei-color-body">
-            <span class="label">Colorimetría gratis</span>
-            <span class="aei-color-title">¿Qué colores te favorecen?</span>
-            <span class="aei-color-text">Con una selfie y seis preguntas descubre tu estación de color, tu paleta y cómo llevarla. Todo se procesa en tu propio dispositivo.</span>
-            <span class="aei-color-cta">Hacer mi colorimetría
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
-            </span>
-          </span>
-        </a>
       </div>
     </div>
   </section>
@@ -793,8 +752,6 @@
       <a href="https://perderte.almaeimagen.com" style="display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;color:#FCE7F1;border:1px solid rgba(252,231,241,.32);border-radius:9999px;padding:11px 22px;text-decoration:none;transition:background .3s,border-color .3s" onmouseover="this.style.background='rgba(252,231,241,.12)';this.style.borderColor='#FCE7F1'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(252,231,241,.32)'">Conoce la guía «Perderte a ti, fue encontrarme a mí» · $17 →</a>
       <br/>
       <a href="https://habitarte.almaeimagen.com" style="display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;color:#FCE7F1;border:1px solid rgba(252,231,241,.32);border-radius:9999px;padding:11px 22px;text-decoration:none;transition:background .3s,border-color .3s" onmouseover="this.style.background='rgba(252,231,241,.12)';this.style.borderColor='#FCE7F1'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(252,231,241,.32)'">Conoce el cuaderno «El Arte de Habitarte» · $7 →</a>
-      <br/>
-      <a href="https://colorimetria.almaeimagen.com" style="display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;color:#FCE7F1;border:1px solid rgba(252,231,241,.32);border-radius:9999px;padding:11px 22px;text-decoration:none;transition:background .3s,border-color .3s" onmouseover="this.style.background='rgba(252,231,241,.12)';this.style.borderColor='#FCE7F1'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(252,231,241,.32)'">Descubre tus colores · Colorimetría gratis →</a>
 
       <p class="mt-8 text-xs text-cream-50/50">© <span id="year"></span> Alma e Imagen · The Academy — Hecho con propósito en Colombia.</p>
 
