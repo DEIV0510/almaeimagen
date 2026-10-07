@@ -154,6 +154,32 @@
     .aei-prod-cover img{height:280px}
   }
   @media (prefers-reduced-motion:reduce){ .aei-prod-card{transition:none} .aei-prod-card:hover{transform:none} }
+  /* Grupos y tarjetas de servicios (landings de terapias, asesoría y mentoría) */
+  .aei-prod-group + .aei-prod-group{margin-top:56px}
+  .aei-prod-group-title{margin:0 0 20px;text-align:center;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#AE1565}
+  .aei-serv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .aei-serv-item{display:flex}
+  .aei-serv-card{flex:1;display:flex;flex-direction:column;border-radius:1.5rem;overflow:hidden;background:#fff;border:1px solid #FDD7E9;box-shadow:0 26px 60px -30px rgba(42,22,34,.2);text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .aei-serv-card:hover{transform:translateY(-4px);border-color:#F5A3CB;box-shadow:0 30px 70px -30px rgba(214,32,126,.35)}
+  .aei-serv-card:focus-visible{outline:2px solid #D6207E;outline-offset:4px}
+  .aei-serv-img{display:block;aspect-ratio:4/3;background:#FDE7F1;overflow:hidden}
+  .aei-serv-img img{display:block;width:100%;height:100%;object-fit:cover}
+  .aei-serv-body{display:flex;flex:1;flex-direction:column;gap:6px;padding:18px 20px 20px}
+  .aei-serv-type{font-family:'Montserrat',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#AE1565}
+  .aei-serv-name{font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.15;font-weight:600;color:#2A1622}
+  .aei-serv-desc{font-size:14px;line-height:1.55;color:#5C4150}
+  .aei-serv-cta{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:12px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:#D6207E}
+  .aei-serv-cta svg{width:16px;height:16px;flex:none}
+  .aei-serv-card:hover .aei-serv-cta{color:#AE1565}
+  .aei-serv-hint{display:none}
+  @media (min-width:1024px){ .aei-serv-grid{grid-template-columns:repeat(4,1fr)} }
+  @media (max-width:639.98px){
+    .aei-serv-grid{display:flex;overflow-x:auto;gap:14px;margin:0 -1.25rem;padding:4px 1.25rem 16px;scroll-snap-type:x mandatory;scroll-padding-left:1.25rem;scrollbar-width:none}
+    .aei-serv-grid::-webkit-scrollbar{display:none}
+    .aei-serv-item{flex:0 0 82%;scroll-snap-align:center}
+    .aei-serv-hint{display:block;margin-top:4px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.08em;color:#AE1565}
+  }
+  @media (prefers-reduced-motion:reduce){ .aei-serv-card{transition:none} .aei-serv-card:hover{transform:none} }
   @media (max-width:339.98px){
     #nav nav{padding-left:12px;padding-right:12px}
     #nav nav > a:first-child > span:first-child{font-size:21px}
@@ -753,8 +779,104 @@
     <div class="aei-prod-head reveal">
       <span class="label">Alma e Imagen</span>
       <h2 class="aei-prod-title">Conoce aquí nuestros productos y servicios</h2>
-      <p class="aei-prod-sub">Guías y cuadernos de Leidy Sepúlveda para seguir tu proceso a tu ritmo.</p>
+      <p class="aei-prod-sub">Terapias, asesoría y guías de Leidy Sepúlveda para acompañarte en cada etapa de tu proceso.</p>
     </div>
+    <div class="aei-prod-group reveal">
+      <h3 class="aei-prod-group-title">Terapias y acompañamiento</h3>
+      <div class="aei-serv-grid">
+        <div class="aei-serv-item">
+          <a href="https://terapiagratitudleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/gratitud.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Terapia para la Gratitud" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia online</span>
+              <span class="aei-serv-name">Terapia para la Gratitud</span>
+              <span class="aei-serv-desc">Aprende a convertir la gratitud en un hábito saludable. Sesiones online personalizadas.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://heridasdemiinfancialeidy.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/heridas.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Heridas de mi Infancia" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia tipo taller</span>
+              <span class="aei-serv-name">Heridas de mi Infancia</span>
+              <span class="aei-serv-desc">Reconoce los eventos que afectan tu personalidad. Terapia online tipo taller.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://sanaramamaleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/mama.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Sanar a Mamá" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia online</span>
+              <span class="aei-serv-name">Sanar a Mamá</span>
+              <span class="aei-serv-desc">Recupera tu abundancia, merecimiento y amor propio. Sesiones online personalizadas.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://sanarapapaleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/papa.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Sanar a Papá" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia online</span>
+              <span class="aei-serv-name">Sanar a Papá</span>
+              <span class="aei-serv-desc">Recupera tu relación con el masculino, sana tus heridas de la infancia y libera el camino hacia tu amor propio.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://terapiaparaelperdonleidy.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/perdon.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Terapia para el Perdón" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia tipo taller</span>
+              <span class="aei-serv-name">Terapia para el Perdón</span>
+              <span class="aei-serv-desc">Libera tu vida y sana tu pasado. Terapia online tipo taller.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://terapiaamorpropioleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/amorpropio.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Amor Propio" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia online</span>
+              <span class="aei-serv-name">Amor Propio</span>
+              <span class="aei-serv-desc">Reconéctate contigo misma y despierta tu poder. Terapia online personalizada.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://asesoriadeimagenleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/asesoria.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Asesoría de Imagen" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Asesoría de imagen</span>
+              <span class="aei-serv-name">Asesoría de Imagen</span>
+              <span class="aei-serv-desc">100% personalizada: 7 sesiones para descubrir tu estilo, colorimetría, visagismo, edición de armario y mucho más.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://mentoria1a1almaeimagen.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/mentoria.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Método Alma e Imagen 1:1" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Mentoría privada 1:1</span>
+              <span class="aei-serv-name">Método Alma e Imagen 1:1</span>
+              <span class="aei-serv-desc">8 sesiones privadas con Leidy: los módulos de la Academia llevados a tu historia, de la sanación profunda a la proyección de imagen.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <p class="aei-serv-hint">Desliza para ver todas &rarr;</p>
+    </div>
+    <div class="aei-prod-group">
+      <h3 class="aei-prod-group-title reveal">Guías digitales</h3>
     <div class="aei-prod-grid">
       <div class="aei-prod-item reveal">
         <a href="https://perderte.almaeimagen.com" class="aei-prod-card">
@@ -788,6 +910,7 @@
           </span>
         </a>
       </div>
+    </div>
     </div>
   </section>
 
