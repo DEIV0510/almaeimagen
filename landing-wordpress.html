@@ -113,6 +113,17 @@
   /* Biografía de Leidy: el texto es más alto que la foto; en escritorio la foto acompaña al leer */
   @media (min-width:1024px){ #leidy > .container-x.grid{align-items:start} #leidy > .container-x.grid > .reveal:first-child{position:sticky;top:112px} }
 
+  /* Logo oficial (imagen) en el encabezado y el pie */
+  .aei-logo{display:block;flex:none;line-height:0}
+  .aei-logo img{display:block;height:66px;width:auto}
+  @media (min-width:640px){ #nav nav{height:78px} }
+  .aei-logo-pie{display:block;height:96px;width:auto;margin:0 auto}
+  @media (max-width:639.98px){ .aei-logo img{height:54px} }
+  @media (max-width:339.98px){ .aei-logo img{height:46px} }
+
+  /* Video: la miniatura de YouTube trae una franja negra a la derecha (41 de 1280 px); se amplía para dejarla fuera */
+  .aei-video-poster{position:absolute;left:0;top:50%;width:103.3%;max-width:none;height:auto;transform:translateY(-50%);display:block}
+
   /* Menú desplegable del encabezado */
   .aei-menu-btn{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 16px 0 13px;border:1px solid rgba(214,32,126,.35);border-radius:9999px;background:#fff;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;color:#AE1565;white-space:nowrap;transition:color .3s}
   .aei-menu-btn:hover{color:#D6207E;border-color:#D6207E}
@@ -267,9 +278,8 @@
 <!-- ===== NAV ===== -->
 <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300 border-b border-transparent">
   <nav class="container-x flex h-[68px] items-center justify-between">
-    <a href="#top" class="flex flex-col leading-none">
-      <span class="font-script text-[28px] text-brand-800">Alma e Imagen</span>
-      <span class="pl-1 font-sans text-[8.5px] font-semibold uppercase tracking-[0.42em] text-ink/70" style="margin-top:2px">The Academy</span>
+    <a href="#top" class="aei-logo" aria-label="Alma e Imagen · The Academy, ir al inicio">
+      <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@d55d79a6f9ce98e7b9734b579bb9d344963c9d4b/assets/marca/logo-rosa.webp" width="395" height="180" alt="Alma e Imagen · The Academy · by Leidy Sepúlveda" fetchpriority="high" />
     </a>
     <div class="aei-nav-end">
       <button type="button" id="aei-menu-btn" class="aei-menu-btn" aria-expanded="false" aria-controls="aei-menu" aria-label="Abrir menú">
@@ -306,7 +316,7 @@
     </div>
     <div class="reveal" style="max-width:920px;margin:40px auto 0">
       <div id="aei-video" role="button" tabindex="0" aria-label="Reproducir el video de Alma e Imagen · The Academy" style="position:relative;aspect-ratio:16/9;border-radius:1.75rem;overflow:hidden;box-shadow:0 30px 70px -40px rgba(94,9,53,.55);border:1px solid rgba(252,231,241,.9);background:#2A1622;cursor:pointer">
-        <img src="https://i.ytimg.com/vi/NWhRBdKVeG4/maxresdefault.jpg" alt="Alma e Imagen · The Academy — video de presentación" fetchpriority="high" width="1280" height="720" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <img src="https://i.ytimg.com/vi/NWhRBdKVeG4/maxresdefault.jpg" alt="Alma e Imagen · The Academy — video de presentación" fetchpriority="high" width="1280" height="720" class="aei-video-poster" />
         <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,22,34,.06),rgba(42,22,34,.42))"></span>
         <span id="aei-video-play" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:86px;height:86px;border-radius:9999px;background:linear-gradient(135deg,#ED2A8C,#B5179E);box-shadow:0 18px 40px -12px rgba(237,42,140,.7);transition:transform .3s">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff" style="margin-left:5px" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -329,7 +339,8 @@
       f.title = 'Alma e Imagen · The Academy';
       f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       f.allowFullscreen = true;
-      f.setAttribute('style','position:absolute;inset:0;width:100%;height:100%;border:0');
+      f.setAttribute('style','position:absolute;top:0;left:1.6%;width:100%;height:100%;border:0');
+      box.style.background = '#000';
       box.innerHTML = '';
       box.style.cursor = 'default';
       box.removeAttribute('role'); box.removeAttribute('tabindex');
@@ -1032,8 +1043,7 @@
   <!-- ===== FOOTER ===== -->
   <footer class="relative overflow-hidden bg-ink text-cream-50">
     <div class="container-x relative z-10 py-14 text-center">
-      <p class="font-script text-4xl text-brand-300">Alma e Imagen</p>
-      <p class="mt-1 font-sans text-[10px] font-semibold uppercase tracking-[0.42em] text-cream-50/60">The Academy · by Leidy Sepúlveda</p>
+      <img class="aei-logo-pie" src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@d55d79a6f9ce98e7b9734b579bb9d344963c9d4b/assets/marca/logo-rosa.webp" width="395" height="180" alt="Alma e Imagen · The Academy · by Leidy Sepúlveda" loading="lazy" decoding="async" />
       <p class="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-cream-50/70">Una experiencia de formación emocional, espiritual y de imagen personal para mujeres que desean sanar, reconciliarse con su historia y proyectar su mejor versión.</p>
 
       <a href="https://perderte.almaeimagen.com" style="display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;color:#FCE7F1;border:1px solid rgba(252,231,241,.32);border-radius:9999px;padding:11px 22px;text-decoration:none;transition:background .3s,border-color .3s" onmouseover="this.style.background='rgba(252,231,241,.12)';this.style.borderColor='#FCE7F1'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(252,231,241,.32)'">Conoce la guía «Perderte a ti, fue encontrarme a mí» · $17 →</a>
