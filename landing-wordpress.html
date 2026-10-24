@@ -244,7 +244,12 @@
   .aei-shop-aisle{display:flex;align-items:center;gap:12px;margin:0 0 22px}
   .aei-shop-aisle .aei-prod-group-title{margin:0;text-align:left;font-family:'Cormorant Garamond',serif;font-size:27px;line-height:1.1;font-weight:600;letter-spacing:0;text-transform:none;color:#2A1622}
   .aei-shop-aisle::after{content:"";flex:1;min-width:16px;height:1px;background:linear-gradient(90deg,#F5A3CB,rgba(245,163,203,0))}
-  #tienda-guias{max-width:960px;margin-left:auto;margin-right:auto}
+  #tienda-guias,#tienda-recursos{max-width:960px;margin-left:auto;margin-right:auto}
+  .aei-rec-cover{gap:10px}
+  .aei-rec-thumbs{display:flex;flex-direction:column;gap:8px;height:240px}
+  .aei-prod-cover .aei-rec-thumbs img{flex:1;min-height:0;width:64px;height:auto;object-fit:cover;border-radius:6px;box-shadow:0 12px 26px -14px rgba(42,22,34,.5)}
+  .aei-prod-desde{display:block;margin-bottom:2px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#AE1565}
+  @media (min-width:768px){ .aei-rec-thumbs{height:280px} .aei-prod-cover .aei-rec-thumbs img{width:74px} }
   .aei-serv-card{position:relative}
   .aei-serv-card .aei-serv-type{position:absolute;top:14px;left:14px;z-index:1;max-width:calc(100% - 28px);padding:7px 12px;border-radius:9999px;background:rgba(255,255,255,.94);font-size:10px;letter-spacing:.14em;color:#AE1565;box-shadow:0 8px 20px -10px rgba(42,22,34,.45)}
   .aei-serv-desc{margin-bottom:16px}
@@ -880,15 +885,16 @@
         <span class="aei-shop-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 7.5h13l-1 12.5h-11z"/><path d="M9 9.5V6.5a3 3 0 0 1 6 0v3"/></svg></span>
         <span class="aei-shop-eyebrow">Tienda Alma e Imagen</span>
         <h2 class="aei-prod-title">Conoce aquí nuestros productos y servicios</h2>
-        <p class="aei-prod-sub">Terapias, asesoría y guías de Leidy Sepúlveda para acompañarte en cada etapa de tu proceso.</p>
+        <p class="aei-prod-sub">Terapias, asesoría, guías y recursos de Leidy Sepúlveda para acompañarte en cada etapa de tu proceso.</p>
         <nav class="aei-shop-cats" aria-label="Categorías de la tienda">
-          <a href="#tienda-terapias">Terapias y acompañamiento <span class="aei-shop-count">8</span></a>
+          <a href="#tienda-terapias">Terapias y acompañamiento <span class="aei-shop-count">10</span></a>
           <a href="#tienda-guias">Guías digitales <span class="aei-shop-count">2</span></a>
+          <a href="#tienda-recursos">Recursos físicos <span class="aei-shop-count">2</span></a>
         </nav>
       </div>
     </div>
     <div class="aei-prod-group reveal" id="tienda-terapias">
-      <div class="aei-shop-aisle"><h3 class="aei-prod-group-title">Terapias y acompañamiento</h3><span class="aei-shop-count" aria-label="8 servicios">8</span></div>
+      <div class="aei-shop-aisle"><h3 class="aei-prod-group-title">Terapias y acompañamiento</h3><span class="aei-shop-count" aria-label="10 servicios">10</span></div>
       <div class="aei-serv-grid">
         <div class="aei-serv-item">
           <a href="https://terapiagratitudleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
@@ -957,6 +963,28 @@
           </a>
         </div>
         <div class="aei-serv-item">
+          <a href="https://tallerinteligenciaemocionalleidy.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/servicios/inteligencia-emocional.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Terapia Inteligencia Emocional" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia tipo taller</span>
+              <span class="aei-serv-name">Terapia Inteligencia Emocional</span>
+              <span class="aei-serv-desc">Aprende a gestionar tus emociones y a relacionarte con más conciencia. Taller online de 90 minutos: individual, en pareja o grupal.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
+          <a href="https://tusistemanerviosotualiado.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
+            <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/servicios/sistema-nervioso.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Tu sistema nervioso, tu aliado" /></span>
+            <span class="aei-serv-body">
+              <span class="aei-serv-type">Terapia tipo taller</span>
+              <span class="aei-serv-name">Tu sistema nervioso, tu aliado</span>
+              <span class="aei-serv-desc">Entiende por qué tu cuerpo se pone en alerta y aprende a decirle: estás a salvo. Sesiones online de 1 hora con cuaderno de trabajo.</span>
+              <span class="aei-serv-cta">Conocer más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg></span>
+            </span>
+          </a>
+        </div>
+        <div class="aei-serv-item">
           <a href="https://asesoriadeimagenleidysepulveda.vercel.app" target="_blank" rel="noopener" class="aei-serv-card">
             <span class="aei-serv-img"><img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@c21d20339a4790bf888d3ddf97a8df798c0cd01e/assets/servicios/asesoria.webp" width="640" height="480" decoding="async" fetchpriority="low" alt="Leidy Sepúlveda · Asesoría de Imagen" /></span>
             <span class="aei-serv-body">
@@ -1010,6 +1038,55 @@
             <span class="aei-prod-foot">
               <span class="aei-prod-price">$7</span>
               <span class="aei-prod-cta">Conocer el cuaderno
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+    </div>
+    <div class="aei-prod-group" id="tienda-recursos">
+      <div class="aei-shop-aisle reveal"><h3 class="aei-prod-group-title">Recursos físicos</h3><span class="aei-shop-count" aria-label="2 recursos">2</span></div>
+    <div class="aei-prod-grid">
+      <div class="aei-prod-item reveal">
+        <a href="https://wa.me/19544694506?text=Hola%20Leidy%2C%20quiero%20comprar%20el%20Reto%20Amor%20Propio%20en%2060%20d%C3%ADas." target="_blank" rel="noopener" class="aei-prod-card">
+          <span class="aei-prod-cover aei-rec-cover">
+            <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/recursos/reto-amor-propio-leidy.webp" width="640" height="960" loading="lazy" decoding="async" alt="Leidy Sepúlveda con la caja del Reto Amor Propio en 60 días" />
+            <span class="aei-rec-thumbs" aria-hidden="true">
+              <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/recursos/reto-amor-propio-caja-tarjetas.webp" width="640" height="960" loading="lazy" decoding="async" alt="" />
+              <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/recursos/reto-amor-propio-playa.webp" width="640" height="960" loading="lazy" decoding="async" alt="" />
+            </span>
+          </span>
+          <span class="aei-prod-body">
+            <span class="aei-prod-type">Recurso físico · Caja de tarjetas</span>
+            <span class="aei-prod-name">Reto Amor Propio en 60 días</span>
+            <span class="aei-prod-desc">2.ª edición · Un camino de autoconocimiento by Leidy Sepúlveda. Caja de tarjetas para un reto diario de 60 días, con tarjeta de bienvenida y código QR al cuaderno de trabajo digital. Disponible en Colombia y Estados Unidos.</span>
+            <span class="aei-prod-foot">
+              <span class="aei-prod-price">$15</span>
+              <span class="aei-prod-cta">Quiero el mío
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
+              </span>
+            </span>
+          </span>
+        </a>
+      </div>
+      <div class="aei-prod-item reveal">
+        <a href="https://pagecheck4.systeme.io/almaeimagen-leidysepulveda" target="_blank" rel="noopener" class="aei-prod-card">
+          <span class="aei-prod-cover aei-rec-cover">
+            <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/recursos/libros-antes-de-ser-leidy.webp" width="640" height="960" loading="lazy" decoding="async" alt="Leidy Sepúlveda con los libros Antes de ser tu mamá y Antes de ser tu papá" />
+            <span class="aei-rec-thumbs" aria-hidden="true">
+              <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/recursos/libros-antes-de-ser-mama.webp" width="640" height="960" loading="lazy" decoding="async" alt="" />
+              <img src="https://cdn.jsdelivr.net/gh/DEIV0510/almaeimagen@8596fc86c6c340283503966b5172fff96a1b5ca1/assets/recursos/libros-antes-de-ser-fotos.webp" width="640" height="960" loading="lazy" decoding="async" alt="" />
+            </span>
+          </span>
+          <span class="aei-prod-body">
+            <span class="aei-prod-type">Libro físico · 4 ediciones</span>
+            <span class="aei-prod-name">Antes de ser tu mamá · Antes de ser tu papá</span>
+            <span class="aei-prod-desc">Un libro guiado con preguntas profundas para que mamá o papá escriban su historia: quiénes eran antes de ser padres, qué soñaban, qué sacrificaron. Un legado emocional para tu familia. En español e inglés.</span>
+            <span class="aei-prod-foot">
+              <span class="aei-prod-price"><small class="aei-prod-desde">desde</small>$49</span>
+              <span class="aei-prod-cta">Ver ediciones
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15"/><path d="M13 5.5l6.5 6.5-6.5 6.5"/></svg>
               </span>
             </span>
